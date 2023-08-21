@@ -27,7 +27,6 @@ let ProjSlider = {
     project1: null,
     project2: null,
     project3: null,
-    width: 0,
     nav: null,
     highlited: null,
 }
@@ -244,33 +243,58 @@ function setUpProjectSlider() {
     ProjSlider.project1 = document.getElementById('project-1');
     ProjSlider.project2 = document.getElementById('project-3');
     ProjSlider.project3 = document.getElementById('project-2');
-    const styles = window.getComputedStyle(ProjSlider.project1);
-    ProjSlider.width = parseFloat(styles.width);
-    
-    // console.log(ProjSlider.sliderWrapper.children[1]);
     var nav = ProjSlider.sliderWrapper.children[1];
     ProjSlider.nav = nav;
-    console.log(nav);
     ProjSlider.highlited = 0;  
-
+    adjustNavForce(0, 0);
     ProjSlider.projectSlider.addEventListener('scroll', projectScroll);
 
 }
 
 function projectScroll () {
     const scrollFront = this.scrollLeft;
-    highlight = Math.round(scrollFront / ProjSlider.width);
-    console.log(highlight);
+    const width = getProjectWidth();
+
+    if (width == 0) return;
+
+    highlight = Math.round(scrollFront / width);
+    adjustNav(highlight);
+    
+}
+
+function adjustNavForce(highlight, old) {
     let nav = ProjSlider.nav;
-    const old = ProjSlider.highlited;
-    console.log(`old ${old}`);
 
-    if (highlight == old) {
-        return;
-    }
-
-    console.log(nav.children[highlight]);
     nav.children[old].classList.remove('slider-nav-hover');
     ProjSlider.highlited = highlight;
     nav.children[highlight].classList.add('slider-nav-hover');
+}
+
+function adjustNav(highlight) {
+    const old = ProjSlider.highlited;
+    if (highlight == old) {
+        return;
+    }
+    adjustNavForce(highlight, old);
+}
+
+function getProjectWidth() {
+    const style = window.getComputedStyle(ProjSlider.project1);
+    return parseFloat(style.width);
+}
+
+function projectJump (index) {
+    const width = getProjectWidth();
+    ProjSlider.projectSlider.scrollLeft = width * index;
+    adjustNav(index);
+}
+
+function nextProject() {
+    const current = ProjSlider.highlited;
+    projectJump((current + 1) % 3);
+}
+
+function prevProject() {
+    const current = ProjSlider.highlited;
+    projectJump((current + 2) % 3);
 }

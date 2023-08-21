@@ -441,10 +441,12 @@
                     <img id="project-3" src="assets/test-saturn.jpg">
                 </div>
                 <div class="slider-nav exclude-full-width-on-mobile">
-                    <a href="#project-1"></a>
-                    <a href="#project-2"></a>
-                    <a href="#project-3"></a>
+                    <a onclick="projectJump(0)"></a>
+                    <a onclick="projectJump(1)"></a>
+                    <a onclick="projectJump(2)"></a>
                 </div>
+                <div id="project-prev" onclick="prevProject()">&lt;</div>
+                <div id="project-next" onclick="nextProject()">&gt;</div>
             </div>
         </div>
 

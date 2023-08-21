@@ -334,7 +334,7 @@ div {
 /*-------------------------------- Projects ----------------------------------*/
 #projects {
     position: relative;
-    max-width: 48rem;
+    max-width: 90%;
     margin: 0 auto;
 }
 
@@ -367,7 +367,6 @@ div {
 }
 
 .slider-nav {
-    /* background-color: red; */
     padding: 0.75rem;
     display: flex;
     column-gap: 1rem;
@@ -388,13 +387,36 @@ div {
     transition: opacity ease 250ms;
 }
 
-.slider-nav a:hover {
-    opacity: 100%;
-}
-
 .slider-nav-hover {
     opacity: 100% !important;
 }
+
+#project-prev,
+#project-next {
+    position: absolute;
+    background-color: rbga(0,0,0,0);
+    font-family: 'DM Sans' 'Roboto';
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 35px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#project-prev:hover,
+#project-next:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#project-prev {
+    left: 0;
+}
+
+#project-next {
+    right: 0;
+}
+
+
 
 /*------------------------------- CONTACT SECTION ----------------------------*/
 .contact-form {
@@ -572,6 +594,12 @@ textarea {
         width: 100%;
         padding: 0;
         margin: 3rem 0;
+    }
+
+    
+    #project-prev,
+    #project-next {
+        visibility: hidden;
     }
 }
 
