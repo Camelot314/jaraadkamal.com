@@ -337,7 +337,7 @@ div {
     overflow: hidden;
 }
 
-.carousel-inner {
+#carousel-inner {
     display: flex;
     transition: tranform 0.5s ease-in-out;
     height: 500px;
@@ -348,8 +348,8 @@ div {
     flex: 0 0 100%;
 }
 
-.carousel-control-prev,
-.carousel-control-next {
+#carousel-control-prev,
+#carousel-control-next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -361,10 +361,10 @@ div {
     cursor: pointer;
 }
 
-.carousel-control-prev {
+#carousel-control-prev {
     left: 0;
 }
-.carousel-control-next {
+#carousel-control-next {
     right: 0;
 }
 /*------------------------------- CONTACT SECTION ----------------------------*/

@@ -1,24 +1,48 @@
+/********************** GLOBALS ***********************************************/
+function initialize () {
+    console.log("hellO");
+    shrinkFeatured();
+    setUpStars();
+}
 
-
-
-document.addEventListener('DOMContentLoaded', initilize);
-
-
-var transitionsSet = false;
 let NavInfo = {
     wasVisible: false,
     currentlySelected: 0,
     heights: [0, 0, 0],
 }
-var resizeTimer;
-var autoHeight = false;
-var prevWidth = window.innerWidth;
 
+let ResizeAnimations = {
+    resizeTimer: null,
+    autoHeight: false,
+    prevWidth: window.innerWidth,
+}
+
+let FeaturedAnimations = {
+    transitionsSet: false,
+}
+
+let ProjCarousel = {
+    carouselInner: null,
+    prevButton: null,
+    nextButton: null,
+    currentIndex: 0,
+    isDragging: false,
+    currentTranslate: 0,
+}
+
+/***************************** LISTENERS **************************************/
 window.onload = function() {
     shrinkFeatured();
     setUpStars();
 }
+window.addEventListener('resize', resizeWindow);
+document.addEventListener("DOMContentLoaded", setUpProjCarousel);
 
+/*************************** CORE FUNCTIONS ***********************************/
+
+/**
+* Sets up all the stars in the resume skills section
+*/
 function setUpStars() {
     var allStars = document.getElementsByClassName("star-holder");
     const length = allStars.length;
@@ -43,6 +67,10 @@ function setUpStars() {
     }
 }
 
+/** 
+ * Will convert a list of classnames into the number of starts the object
+ * should have
+ */
 function getStarCount(list) {
     var length = list.length;
     for (var i = 0; i < length; i++) {
@@ -66,6 +94,10 @@ function getStarCount(list) {
     return null;
 }
 
+
+/**
+ * Functions associated with shrinking the sliding content of the website.
+ */
 function shrinkFeatured () {
     for (let i = 0; i < 3; i++) {
         var div = getFeaturedItem(i);
@@ -81,7 +113,7 @@ function setFeaturedHeight() {
         if (i == NavInfo.currentlySelected) {
             var div = getFeaturedItem(i);
             div.style.height = `${div.clientHeight}px`;
-            autoHeight = false;
+            ResizeAnimations.autoHeight = false;
         } else {
             var div = getFeaturedItem(i);
             var ogHeight = div.style.height;
@@ -92,22 +124,22 @@ function setFeaturedHeight() {
     }
 }
 
-window.addEventListener('resize', function () {
+function resizeWindow() {
     const currentWidth = window.innerWidth;
-    if (Math.abs(currentWidth - prevWidth) < 10) {
+    if (Math.abs(currentWidth - ResizeAnimations.prevWidth) < 10) {
         return;
     } 
-    prevWidth = currentWidth
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(setFeaturedHeight, 200);
-    if (autoHeight == false && NavInfo.wasVisible) {
+    ResizeAnimations.prevWidth = currentWidth
+    clearTimeout(ResizeAnimations.resizeTimer);
+    ResizeAnimations.resizeTimer = setTimeout(setFeaturedHeight, 200);
+    if (ResizeAnimations.autoHeight == false && NavInfo.wasVisible) {
         const i = NavInfo.currentlySelected;
         var div = getFeaturedItem(i);
         div.style.height = 'auto';
         NavInfo.heights[i] = div.clientHeight;
-        autoHeight = true;
+        ResizeAnimations.autoHeight = true;
     }
-});
+}
 
 function setTransitions() {
     for (let i = 0; i < 3; i ++) {
@@ -141,9 +173,9 @@ function toggleFeatured(index) {
     var nav = null;
 
     // setting transitions
-    if (!transitionsSet) {
+    if (!FeaturedAnimations.transitionsSet) {
         setTransitions();
-        transitionsSet = true;
+        FeaturedAnimations.transitionsSet = true;
     }
 
     // was invisible.
@@ -201,34 +233,71 @@ function unhighlightSkill(section) {
 }
 
 // PROJECTS
-const carouselInner = document.querySelector('.carousel-inner');
-const prevButton = document.querySelector('.carousel-control-prev');
-const nextButton = document.querySelector('.carousel-control-next');
-console.log(document.querySelector('carousel'));
-console.log(carouselInner);
-console.log(prevButton);
-console.log(nextButton);
-let currentIndex = 0;
-let isDragging = false;
-let startPosition = 0;
-let currentTranslate = 0;
+function setUpProjCarousel() {
+    ProjCarousel.carouselInner = document.getElementById('carousel-inner');
+    ProjCarousel.prevButton = document.getElementById('carousel-control-prev');
+    ProjCarousel.nextButton = document.getElementById('carousel-control-next');
+    
+
+    ProjCarousel.prevButton.addEventListener(
+        'click', 
+        prevButtonAction
+    );
+    ProjCarousel.nextButton.addEventListener(
+        'click',
+        nextButtonAction
+    );
+
+    // drag controls
+    window.addEventListener('mousemove', mouseMove);
+    ProjCarousel.carouselInner.addEventListener('mouseDown', mouseDownAction);
+    window.addEventListener('mouseup', mouseUp);
+}
+
+function prevButtonAction () {
+    ProjCarousel.currentIndex = (ProjCarousel.currentIndex + 2) % 3;
+    updateCarousel();
+}
+
+function nextButtonAction() {
+    ProjCarousel.currentIndex = (ProjCarousel.currentIndex + 1) % 3; 
+    updateCarousel();
+}
+
+function mouseMove(e) {
+    if (!ProjCarousel.isDragging) return;
+
+    const currentPosition = e.clientX;
+    const deltaX = currentPosition - startPosition;
+    const newTranslate = ProjCarousel.currentTranslate + deltaX;
+
+    setTranslate(newTranslate);
+}
+
+function mouseUp() {
+    if (!ProjCarousel.isDragging) return;
+
+    ProjCarousel.isDragging = false;
+    const threshold = ProjCarousel.carouselInner.offsetWidth / 4;
+    const currTranslate = getCurrentTranslate();
 
 
-// function prevButtonAciton () {
-//     currentIndex = (currentIndex - 1) + 3 % 3;
-//     updateCarousel();
-// }
+    if (Math.abs(ProjCarousel.startPosition - currTranslate) > threshold) {
+        if (ProjCarousel.startPosition < currTranslate) {
+            ProjCarousel.currentIndex = Math.max(ProjCarousel.currentIndex - 1, 0);
+        } else {
+            ProjCarousel.currentIndex = Math.min(ProjCarousel.currentIndex + 1, 2);
+        }
+    }
 
-// function nextButtonAction() {
-//     currentIndex = (currentIndex + 1) % 3; 
-//     updateCarousel();
-// }
+    updateCarousel();
+}
 
-// function mouseDownAction(e) {
-//     isDragging = true;
-//     startPosition = e.clientX;
-//     currentTranslate = getCurrentTranslate();
-// }
+function mouseDownAction(e) {
+    ProjCarousel.isDragging = true;
+    ProjCarousel.startPosition = e.clientX;
+    ProjCarousel.currentTranslate = getCurrentTranslate();
+}
 
 // function touchStartListener(e) {
 //     isDragging = true;
@@ -253,87 +322,46 @@ let currentTranslate = 0;
 //     updateCarousel();
 // }
 
+// carouselInner.addEventListener('mousedown', (e) => {
+//     isDragging = true;
+//     startPosition = e.clientX;
+//     currentTranslate = getCurrentTranslate();
+// });
+
+// carouselInner.addEventListener('touchstart', (e) => {
+//     isDragging = true;
+//     startPosition = e.touches[0].clientX;
+//     currentTranslate = getCurrentTranslate();
+// });
 
 
-prevButton.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + 3) % 3;
-    updateCarousel();
-});
 
-nextButton.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % 3;
-    updateCarousel();
-});
+// window.addEventListener('touchmove', (e) => {
+//     if (!isDragging) return;
 
-carouselInner.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    startPosition = e.clientX;
-    currentTranslate = getCurrentTranslate();
-});
+//     const currentPosition = e.touches[0].clientX;
+//     const deltaX = currentPosition - startPosition;
+//     const newTranslate = currentTranslate + deltaX;
 
-carouselInner.addEventListener('touchstart', (e) => {
-    isDragging = true;
-    startPosition = e.touches[0].clientX;
-    currentTranslate = getCurrentTranslate();
-});
+//     setTranslate(newTranslate);
+// });
 
-window.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
+// carouselInner.addEventListener('touchend', () => {
+//     if (!isDragging) return;
 
-    const currentPosition = e.clientX;
-    const deltaX = currentPosition - startPosition;
-    const newTranslate = currentTranslate + deltaX;
+//     isDragging = false;
+//     const threshold = carouselInner.offsetWidth / 4;
 
-    setTranslate(newTranslate);
-});
+//     if (Math.abs(startPosition - getCurrentTranslate()) > threshold) {
+//         if (startPosition < getCurrentTranslate()) {
+//             currentIndex = Math.max(currentIndex - 1, 0);
+//         } else {
+//             currentIndex = Math.min(currentIndex + 1, 2);
+//         }
+//     }
 
-window.addEventListener('touchmove', (e) => {
-    if (!isDragging) return;
-
-    const currentPosition = e.touches[0].clientX;
-    const deltaX = currentPosition - startPosition;
-    const newTranslate = currentTranslate + deltaX;
-
-    setTranslate(newTranslate);
-});
-
-window.addEventListener('mouseup', () => {
-    if (!isDragging) return;
-
-    isDragging = false;
-    const threshold = carouselInner.offsetWidth / 4;
-
-    if (Math.abs(startPosition - getCurrentTranslate()) > threshold) {
-        if (startPosition < getCurrentTranslate()) {
-            currentIndex = Math.max(currentIndex - 1, 0);
-        } else {
-            currentIndex = Math.min(currentIndex + 1, 2);
-        }
-    }
-
-    updateCarousel();
-});
-
-carouselInner.addEventListener('touchend', () => {
-    if (!isDragging) return;
-
-    isDragging = false;
-    const threshold = carouselInner.offsetWidth / 4;
-
-    if (Math.abs(startPosition - getCurrentTranslate()) > threshold) {
-        if (startPosition < getCurrentTranslate()) {
-            currentIndex = Math.max(currentIndex - 1, 0);
-        } else {
-            currentIndex = Math.min(currentIndex + 1, 2);
-        }
-    }
-
-    updateCarousel();
-});
-
-function updateCarousel() {
-    carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
-}
+//     updateCarousel();
+// });
 
 function getCurrentTranslate() {
     const transformValue = window.getComputedStyle(carouselInner).getPropertyValue('transform');
@@ -342,5 +370,16 @@ function getCurrentTranslate() {
 }
 
 function setTranslate(translate) {
-    carouselInner.style.transform = `translateX(${translate}px)`;
+    ProjCarousel
+        .carouselInner
+        .style
+        .transform = `translateX(${translate}px)`;
+}
+
+function updateCarousel () {
+   ProjCarousel
+    .carouselInner
+    .style
+    .transform = `translateX(-${ProjCarousel.currentIndex * 100}%)`;
+   console.log("hello");
 }
