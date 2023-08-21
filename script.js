@@ -21,13 +21,15 @@ let FeaturedAnimations = {
     transitionsSet: false,
 }
 
-let ProjCarousel = {
-    carouselInner: null,
-    prevButton: null,
-    nextButton: null,
-    currentIndex: 0,
-    isDragging: false,
-    currentTranslate: 0,
+let ProjSlider = {
+    projectSlider: null,
+    sliderWrapper: null,
+    project1: null,
+    project2: null,
+    project3: null,
+    width: 0,
+    nav: null,
+    highlited: null,
 }
 
 /***************************** LISTENERS **************************************/
@@ -36,7 +38,7 @@ window.onload = function() {
     setUpStars();
 }
 window.addEventListener('resize', resizeWindow);
-document.addEventListener("DOMContentLoaded", setUpProjCarousel);
+document.addEventListener("DOMContentLoaded", setUpProjectSlider);
 
 /*************************** CORE FUNCTIONS ***********************************/
 
@@ -233,153 +235,42 @@ function unhighlightSkill(section) {
 }
 
 // PROJECTS
-function setUpProjCarousel() {
-    ProjCarousel.carouselInner = document.getElementById('carousel-inner');
-    ProjCarousel.prevButton = document.getElementById('carousel-control-prev');
-    ProjCarousel.nextButton = document.getElementById('carousel-control-next');
+function setUpProjectSlider() {
+    const projectSlider = document.getElementById('project-slider');
+    ProjSlider.projectSlider = projectSlider;
+
+    ProjSlider.sliderWrapper = projectSlider.parentNode;
+
+    ProjSlider.project1 = document.getElementById('project-1');
+    ProjSlider.project2 = document.getElementById('project-3');
+    ProjSlider.project3 = document.getElementById('project-2');
+    const styles = window.getComputedStyle(ProjSlider.project1);
+    ProjSlider.width = parseFloat(styles.width);
     
+    // console.log(ProjSlider.sliderWrapper.children[1]);
+    var nav = ProjSlider.sliderWrapper.children[1];
+    ProjSlider.nav = nav;
+    console.log(nav);
+    ProjSlider.highlited = 0;  
 
-    ProjCarousel.prevButton.addEventListener(
-        'click', 
-        prevButtonAction
-    );
-    ProjCarousel.nextButton.addEventListener(
-        'click',
-        nextButtonAction
-    );
+    ProjSlider.projectSlider.addEventListener('scroll', projectScroll);
 
-    // drag controls
-    window.addEventListener('mousemove', mouseMove);
-    ProjCarousel.carouselInner.addEventListener('mouseDown', mouseDownAction);
-    window.addEventListener('mouseup', mouseUp);
 }
 
-function prevButtonAction () {
-    ProjCarousel.currentIndex = (ProjCarousel.currentIndex + 2) % 3;
-    updateCarousel();
-}
+function projectScroll () {
+    const scrollFront = this.scrollLeft;
+    highlight = Math.round(scrollFront / ProjSlider.width);
+    console.log(highlight);
+    let nav = ProjSlider.nav;
+    const old = ProjSlider.highlited;
+    console.log(`old ${old}`);
 
-function nextButtonAction() {
-    ProjCarousel.currentIndex = (ProjCarousel.currentIndex + 1) % 3; 
-    updateCarousel();
-}
-
-function mouseMove(e) {
-    if (!ProjCarousel.isDragging) return;
-
-    const currentPosition = e.clientX;
-    const deltaX = currentPosition - startPosition;
-    const newTranslate = ProjCarousel.currentTranslate + deltaX;
-
-    setTranslate(newTranslate);
-}
-
-function mouseUp() {
-    if (!ProjCarousel.isDragging) return;
-
-    ProjCarousel.isDragging = false;
-    const threshold = ProjCarousel.carouselInner.offsetWidth / 4;
-    const currTranslate = getCurrentTranslate();
-
-
-    if (Math.abs(ProjCarousel.startPosition - currTranslate) > threshold) {
-        if (ProjCarousel.startPosition < currTranslate) {
-            ProjCarousel.currentIndex = Math.max(ProjCarousel.currentIndex - 1, 0);
-        } else {
-            ProjCarousel.currentIndex = Math.min(ProjCarousel.currentIndex + 1, 2);
-        }
+    if (highlight == old) {
+        return;
     }
 
-    updateCarousel();
-}
-
-function mouseDownAction(e) {
-    ProjCarousel.isDragging = true;
-    ProjCarousel.startPosition = e.clientX;
-    ProjCarousel.currentTranslate = getCurrentTranslate();
-}
-
-// function touchStartListener(e) {
-//     isDragging = true;
-//     startPosition = e.touches[0].clientX;
-//     currentTranslate = getCurrentTranslate();
-// }
-
-// function touchendListener() {
-//     if (!isDragging) return;
-
-//     isDragging = false;
-//     const threshold = carouselInner.offsetWidth / 4;
-
-//     if (Math.abs(startPosition - getCurrentTranslate()) > threshold) {
-//         if (startPosition < getCurrentTranslate()) {
-//             currentIndex = Math.max(currentIndex - 1, 0);
-//         } else {
-//             currentIndex = Math.min(currentIndex + 1, 2);
-//         }
-//     }
-
-//     updateCarousel();
-// }
-
-// carouselInner.addEventListener('mousedown', (e) => {
-//     isDragging = true;
-//     startPosition = e.clientX;
-//     currentTranslate = getCurrentTranslate();
-// });
-
-// carouselInner.addEventListener('touchstart', (e) => {
-//     isDragging = true;
-//     startPosition = e.touches[0].clientX;
-//     currentTranslate = getCurrentTranslate();
-// });
-
-
-
-// window.addEventListener('touchmove', (e) => {
-//     if (!isDragging) return;
-
-//     const currentPosition = e.touches[0].clientX;
-//     const deltaX = currentPosition - startPosition;
-//     const newTranslate = currentTranslate + deltaX;
-
-//     setTranslate(newTranslate);
-// });
-
-// carouselInner.addEventListener('touchend', () => {
-//     if (!isDragging) return;
-
-//     isDragging = false;
-//     const threshold = carouselInner.offsetWidth / 4;
-
-//     if (Math.abs(startPosition - getCurrentTranslate()) > threshold) {
-//         if (startPosition < getCurrentTranslate()) {
-//             currentIndex = Math.max(currentIndex - 1, 0);
-//         } else {
-//             currentIndex = Math.min(currentIndex + 1, 2);
-//         }
-//     }
-
-//     updateCarousel();
-// });
-
-function getCurrentTranslate() {
-    const transformValue = window.getComputedStyle(carouselInner).getPropertyValue('transform');
-    const matrix = new DOMMatrixReadOnly(transformValue);
-    return matrix.m41;
-}
-
-function setTranslate(translate) {
-    ProjCarousel
-        .carouselInner
-        .style
-        .transform = `translateX(${translate}px)`;
-}
-
-function updateCarousel () {
-   ProjCarousel
-    .carouselInner
-    .style
-    .transform = `translateX(-${ProjCarousel.currentIndex * 100}%)`;
-   console.log("hello");
+    console.log(nav.children[highlight]);
+    nav.children[old].classList.remove('slider-nav-hover');
+    ProjSlider.highlited = highlight;
+    nav.children[highlight].classList.add('slider-nav-hover');
 }
