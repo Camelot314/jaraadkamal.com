@@ -337,10 +337,14 @@ div {
     max-width: 90%;
     margin: 0 auto;
 }
-
+.slider-wrapper {
+    width: 95%;
+}
 .slider {
+    background-color: white;
+    color: black;
+    max-height: 80vh;
     display: flex;
-    aspect-ratio: 16 / 9;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
@@ -360,10 +364,11 @@ div {
     scrollbar-width: none;
   } 
 
-.slider img {
+.slider .content {
     flex: 1 0 100%;
     scroll-snap-align: start;
     object-fit: cover;
+    padding: 1rem 2rem;
 }
 
 .slider-nav {
@@ -382,8 +387,8 @@ div {
     width: .75rem;
     height: .75rem;
     border-radius: 50%;
-    background-color: #fff;
-    opacity: 0.70;
+    background-color: #000;
+    opacity: 0.30;
     transition: opacity ease 250ms;
 }
 
@@ -400,74 +405,82 @@ div {
     transform: translateY(-50%);
     font-size: 35px;
     padding: 5px;
-    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer; 
+    filter: invert(1);
 }
 
 #project-prev:hover,
 #project-next:hover {
     background-color: rgba(255, 255, 255, 0.3);
+    filter: invert(0);
 }
 
 #project-prev {
     left: 0;
+    background-image: url("assets/back.png");
 }
 
 #project-next {
     right: 0;
+    background-image: url("assets/next.png");
 }
 
+#projects .content {
+    height: 80vh;
+}
 
+#projects .content h1 {
+    font-size: 4rem;
+}
 
-/*------------------------------- CONTACT SECTION ----------------------------*/
-.contact-form {
-    padding: 10px;
+#projects .left-half {
+    padding-left: 2.5%;
+}
+
+#projects .right-half {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    width: 30%;
+}
+
+#projects .left-half {
     width: 70%;
 }
 
-
-.contact-form form {
-    text-align: left;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+.project-info {
+    font-size: 30px;
+    width: 30rem;
+    /* background-color: red; */
 }
 
-.contact-form h1 {
-    padding: 5px;
-    margin: 10px 0;
+.project-name {
+    padding-bottom: 0;
+    margin-bottom: 5px;
 }
 
-.input-field:not(.button) {
-    width: 80%;
+.subheading {
+    font-size: medium;
 }
 
-.input-field {
-    font-size: 18px;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-    padding-left: 15px;
-    outline: none;
-
-    /* Remove default drop shadow */
-    box-shadow: none;
-
-    /* Add any other custom styling you desire */
-    background-color: white;
-    color: rgb(46, 46, 46);
-    border: 2px solid white;
-    border-radius: 0;
+.subheading a {
+    text-decoration: None;
+    color: #497AA6;
+    padding-left: 10px;
 }
 
-.input-field:not(textarea) {
-    height: 40px;
+.subheading a:hover {
+    font-weight: bold;
 }
 
-textarea {
-    padding-top: 10px;
-    height: 20vh;
+.right-half a {
+    width: 100%;
+}
+
+.right-half a img {
+    width: 20vw;
 }
 
 /* --------------------------------- LINKS -----------------------------------*/
@@ -548,23 +561,6 @@ textarea {
         width: 100%;
     }
 
-    .contact-form {
-        text-align: center;
-        align-items: center;
-        padding: 0;
-        margin: 0;
-        height: 65vh;
-    }
-
-    .contact-form form {
-        width: 90%;
-        align-items: center;
-    }
-
-    .contact-form form div {
-        text-align: center;
-    }
-
     .links {
         text-align: center;
         padding: 0;
@@ -601,11 +597,37 @@ textarea {
     #project-next {
         visibility: hidden;
     }
-}
 
-@media screen and (max-width: 600px) {
-    .contact-form *:not(.button) {
-        width: 90%;
+    .content {
+        flex-direction: column;
+        justify-content: space-evenly;
+        min-height: 80vh;
+    }
+    
+    #projects .left-half,
+    #projects .right-half {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 0;
+    }
+
+    #projects .content .project-name {
+        font-size: 3rem;
+        margin-top: 5px;
+    }
+
+    .project-info {
+        width: auto;
+        font-size: large;
+    }
+
+    .right-half a img {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20vh;
+        height: auto;
     }
 }
 
@@ -620,6 +642,10 @@ textarea {
         position: absolute;
         top: 400px;
         overflow: hidden;
+    }
+
+    #project-slider {
+        min-height: 600px;
     }
 }
 

@@ -57,14 +57,10 @@
             </div>
             <div class="resume-grid" id="skills-grid">
                 <div class="grid-item">
-                    <h3>Certifications and Clearance</h3>
+                    <h3>Certifications</h3>
                     <div class="between certification">
                         <p>AWS</p>
                         <p>Solutions Architect (Associates)</p>
-                    </div>
-                    <div class="between certification">
-                        <p>Security Clearance</p>
-                        <p>Interim Top Secret</p>
                     </div>
                 </div>
                 <div class="grid-item">
@@ -436,52 +432,132 @@
     <div class="featured section" id="projects">
             <div class="slider-wrapper">
                 <div class="slider" id="project-slider">
-                    <img id="project-1" src="assets/test-earth.jpg">
-                    <img id="project-2" src="assets/test-moon.jpg">
-                    <img id="project-3" src="assets/test-saturn.jpg">
+                    <div id="project-1" class="content between">
+                        <div class="left-half">
+                            <h1 class="project-name">JCaml</h1>
+                            <div class="subheading">
+                                <strong>Link</strong>
+                                <a 
+                                    href="https://github.com/Camelot314/JCaml"
+                                    target="_blank">
+                                    Github.com
+                                </a>
+                            </div>
+                            <p class="project-info">
+                                This is my compilers project that focused on 
+                                creating a programming language called JCamel.
+                                It is a functional programming language that is
+                                similar to Racket.
+                            </p>
+                            <p class="project-info">
+                                The language is written in racket, C and x86 
+                                Assembly. This was a massive compilers project
+                            </p>
+                        </div>
+                        <div class="right-half">
+                            <a 
+                                href="https://github.com/Camelot314/JCaml"
+                                target="_blank">
+                                <img src="assets/camel.png">
+                            </a>
+                        </div>
+                    </div>
+                    <div id="project-2" class="content between">
+                        <div class="left-half">
+                            <h1 class="project-name">Ant Optimization</h2>
+                            <div class="subheading">
+                                <strong>Link</strong>
+                                <a
+                                    href="https://github.com/Camelot314/ant-colony-optimization"
+                                    target="_blank">
+                                    GitHub.com
+                                </a>
+                            </div>
+                            <p class="project-info">
+                                This project creates an approximate solution to 
+                                the traveling salesman problem in polynomial time.
+                            </p>
+                            <p class="project-info">
+                                The program uses my approach of <i>Ant Colony 
+                                Optimization</i> which is an algorithm that 
+                                models ants foraging.
+                            </p>
+                        </div>
+                        <div class="right-half">
+                            <a
+                                href="https://github.com/Camelot314/ant-colony-optimization"
+                                target="_blank">
+                                <img src="assets/nodes.png">
+                            </a>
+                        </div>
+                    </div>
+                    <div id="project-3" class="content between">
+                        <div class="left-half">
+                            <h1 class="project-name">Rubik's Analysis</h1>
+                            <div class="subheading">
+                                <strong>Link</strong>
+                                <a 
+                                    href="https://github.com/Camelot314/rubiks_analysis/"
+                                    target="_blank">
+                                    Github.com
+                                </a>
+                            </div>
+                            <p class="project-info">
+                                I created this project as a simple tutorial for 
+                                introductory data science. 
+                            </p>
+                            <p class="project-info">
+                                It is a project that 
+                                explored Rubik's cube competitons and analyzed 
+                                which countries were performing statistically 
+                                worse.
+                            </p>
+                        </div>
+                        <div class="right-half">
+                            <a 
+                                href="https://github.com/Camelot314/rubiks_analysis/"
+                                target="_blank">
+                                <img src="assets/rubik.png">
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="slider-nav exclude-full-width-on-mobile">
                     <a onclick="projectJump(0)"></a>
                     <a onclick="projectJump(1)"></a>
                     <a onclick="projectJump(2)"></a>
                 </div>
-                <div id="project-prev" onclick="prevProject()">&lt;</div>
-                <div id="project-next" onclick="nextProject()">&gt;</div>
+                <img src="assets/back.png" id="project-prev" onclick="prevProject()">
+                <img src="assets/next.png" id="project-next" onclick="nextProject()">
             </div>
         </div>
 
     </div>
     <div class="section always-visible" id="final-section">
-    <div class="links resume-grid">
-        <div class="grid-item">
-            <h1>Links</h1>
-            <div class="icon-holder">
-                <a href="https://www.linkedin.com/in/jaraad-kamal/" 
-                    class="icon-link"
-                    target="_blank"
-                    title="LinkedIn">
-                    <img src="/assets/linkedin-icon.png" 
-                        class="full-width full-height">
-                </a>
-                <a href="https://github.com/Camelot314" 
-                    class="icon-link"
-                    target="_blank"
-                    title="GitHub">
-                    <img src="/assets/github-icon.png" 
-                        class="full-width full-height">
-                </a>
-                <a href="mailto:kjaraad@gmail.com" 
-                    class="icon-link"
-                    target="_blank"
-                    title="Email">
-                    <img src="/assets/mail-icon.png" 
-                        class="full-width full-height">
-                </a>
-            </div>
-        </div>
-        <div class="grid-item">
-            <h1>Phone</h1>
-            <p>(301) 233 - 2245</p>
+    <div class="links">
+        <h1>Links</h1>
+        <div class="icon-holder">
+            <a href="https://www.linkedin.com/in/jaraad-kamal/" 
+                class="icon-link"
+                target="_blank"
+                title="LinkedIn">
+                <img src="/assets/linkedin-icon.png" 
+                    class="full-width full-height">
+            </a>
+            <a href="https://github.com/Camelot314" 
+                class="icon-link"
+                target="_blank"
+                title="GitHub">
+                <img src="/assets/github-icon.png" 
+                    class="full-width full-height">
+            </a>
+            <a href="mailto:kjaraad@gmail.com" 
+                class="icon-link"
+                target="_blank"
+                title="Email">
+                <img src="/assets/mail-icon.png" 
+                    class="full-width full-height">
+            </a>
         </div>
     </div>
 </body>
