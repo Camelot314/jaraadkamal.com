@@ -36,6 +36,7 @@ let ProjSlider = {
 window.onload = function() {
     shrinkFeatured();
     setUpStars();
+    setUpHighlighting();
 }
 window.addEventListener('resize', resizeWindow);
 document.addEventListener("DOMContentLoaded", setUpProjectSlider);
@@ -66,6 +67,15 @@ function setUpStars() {
                 allStars[i].appendChild(star);
             }
         }
+    }
+}
+
+function setUpHighlighting() {
+    var allSkills = document.getElementsByClassName("skill");
+    const length = allSkills.length;
+    for (var i = 0; i < length; i++) {
+        allSkills[i].onmouseenter = function () {highlightSkill(this)};
+        allSkills[i].onmouseleave = function () {unhighlightSkill(this)};
     }
 }
 
