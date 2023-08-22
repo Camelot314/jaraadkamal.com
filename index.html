@@ -25,7 +25,7 @@
   </nav>
 
   <div class="featured section" id="about">
-    <img src="assets/profile.jpg">
+    <img src="assets/profile.jpg" alt="picture of Jaraad">
     <div class="text-box">
         <div class="summary">
             <p>
@@ -458,7 +458,7 @@
                             <a 
                                 href="https://github.com/Camelot314/JCaml"
                                 target="_blank">
-                                <img src="assets/camel.png">
+                                <img src="assets/camel.png" alt="picture of camel">
                             </a>
                         </div>
                     </div>
@@ -487,7 +487,8 @@
                             <a
                                 href="https://github.com/Camelot314/ant-colony-optimization"
                                 target="_blank">
-                                <img src="assets/nodes.png">
+                                <img src="assets/nodes.png" 
+                                    alt="picture of graph with nodes">
                             </a>
                         </div>
                     </div>
@@ -517,7 +518,42 @@
                             <a 
                                 href="https://github.com/Camelot314/rubiks_analysis/"
                                 target="_blank">
-                                <img src="assets/rubik.png">
+                                <img src="assets/rubik.png" 
+                                    alt="picture of rubik's cube">
+                            </a>
+                        </div>
+                    </div>
+                    <div id="project-4" class="content between">
+                        <div class="left-half">
+                            <h1 class="project-name">Block Craft</h1>
+                            <div class="subheading">
+                                <strong>Link</strong>
+                                <a 
+                                    href="https://github.com/Camelot314/BlockCraft"
+                                    target="_blank">
+                                    Github.com
+                                </a>
+                                <a href="assets/Block_Craft_1_8_Setup.exe" download>
+                                    Windows Download
+                                </a>
+                            </div>
+                            <p class="project-info">
+                                This is a video game I created that similar to
+                                the game MineCraft. It is a terraforming and 
+                                exploration based game.
+                            </p>
+                            <p class="project-info">
+                                It is written in C# and uses the Unity game 
+                                engine. It is the largest project that I have 
+                                ever completed.
+                            </p>
+                        </div>
+                        <div class="right-half">
+                            <a 
+                                href="https://github.com/Camelot314/BlockCraft"
+                                target="_blank">
+                                <img src="assets/Block_Craft_Icon_Sized.png" 
+                                    alt="picture of rubik's cube">
                             </a>
                         </div>
                     </div>
@@ -526,9 +562,15 @@
                     <a onclick="projectJump(0)"></a>
                     <a onclick="projectJump(1)"></a>
                     <a onclick="projectJump(2)"></a>
+                    <a onclick="projectJump(3)"></a>
                 </div>
-                <img src="assets/back.png" id="project-prev" onclick="prevProject()">
-                <img src="assets/next.png" id="project-next" onclick="nextProject()">
+                <img src="assets/back.png" id="project-prev" 
+                    onclick="prevProject()" 
+                    alt="back button">
+                <img src="assets/next.png" 
+                    id="project-next" 
+                    onclick="nextProject()"
+                    alt="next button">
             </div>
         </div>
 
@@ -542,21 +584,24 @@
                 target="_blank"
                 title="LinkedIn">
                 <img src="/assets/linkedin-icon.png" 
-                    class="full-width full-height">
+                    class="full-width full-height"
+                    alt="linkedin button">
             </a>
             <a href="https://github.com/Camelot314" 
                 class="icon-link"
                 target="_blank"
                 title="GitHub">
                 <img src="/assets/github-icon.png" 
-                    class="full-width full-height">
+                    class="full-width full-height"
+                    alt="GitHub button">
             </a>
             <a href="mailto:kjaraad@gmail.com" 
                 class="icon-link"
                 target="_blank"
                 title="Email">
                 <img src="/assets/mail-icon.png" 
-                    class="full-width full-height">
+                    class="full-width full-height"
+                    alt="email button">
             </a>
         </div>
     </div>

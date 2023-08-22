@@ -27,6 +27,7 @@ let ProjSlider = {
     project1: null,
     project2: null,
     project3: null,
+    project4: null,
     nav: null,
     highlited: null,
 }
@@ -243,6 +244,7 @@ function setUpProjectSlider() {
     ProjSlider.project1 = document.getElementById('project-1');
     ProjSlider.project2 = document.getElementById('project-3');
     ProjSlider.project3 = document.getElementById('project-2');
+    ProjSlider.project4 = document.getElementById('project-4');
     var nav = ProjSlider.sliderWrapper.children[1];
     ProjSlider.nav = nav;
     ProjSlider.highlited = 0;  
@@ -291,10 +293,10 @@ function projectJump (index) {
 
 function nextProject() {
     const current = ProjSlider.highlited;
-    projectJump((current + 1) % 3);
+    projectJump((current + 1) % 4);
 }
 
 function prevProject() {
     const current = ProjSlider.highlited;
-    projectJump((current + 2) % 3);
+    projectJump((current + 3) % 4);
 }
