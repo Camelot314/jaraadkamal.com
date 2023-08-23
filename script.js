@@ -220,7 +220,7 @@ function toggleFeatured(index) {
 }
 
 function highlightSkill(section) {
-    section.style.fontWeight = "bold";
+    section.style.color = "#497AA6";
     var starHolder = section.children[1];
     for (var i = 0; i < 5; i ++) {
         const child = starHolder.children[i];
@@ -233,7 +233,7 @@ function highlightSkill(section) {
 }
 
 function unhighlightSkill(section) {
-    section.style.fontWeight = "normal";
+    section.style.color = null;
     var starHolder = section.children[1];
     for (var child=starHolder.firstChild; child !== null; child=child.nextSibling) {
         if (child.className == "empty") {

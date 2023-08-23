@@ -218,7 +218,7 @@ h1, h2, h3 {
     padding: 0;
 }
 .certification:hover {
-    font-weight: bold;
+    color: #497AA6;
 }
 
 
@@ -325,16 +325,6 @@ h1, h2, h3 {
         margin: 0;
     }
 
-    #career::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-image: url('/assets/tiled_bg_stars.jpg');
-        background-attachment: fixed;
-        filter: contrast(0.70);
-        z-index: -1;
-    }
 }
 
 /*-------------------------------- Projects ----------------------------------*/
@@ -368,6 +358,7 @@ h1, h2, h3 {
   .slider {
     -ms-overflow-style: none;
     scrollbar-width: none;
+    position: relative;
   } 
 
 .slider .content {
@@ -459,7 +450,6 @@ h1, h2, h3 {
 .project-info {
     font-size: 30px;
     width: 30rem;
-    /* background-color: red; */
 }
 
 .project-name {
@@ -490,6 +480,73 @@ h1, h2, h3 {
     width: 20vw;
 }
 
+#projects .left-half,
+#projects .right-half {
+    z-index: 1;
+}
+
+.content::before,
+.content::after {
+    content: "";
+    aspect-ratio: 1;
+    background-color: #25252629;
+    position: absolute;
+}
+
+.content::before {
+    height: 250px;
+}
+
+.content::after {
+    height: 100px;
+}
+
+#project-1::before,
+#project-3::before {
+    border-radius: 0 100% 0 0;
+    bottom: 0%;
+    left: 0%;
+}
+
+#project-1::after,
+#project-3::after {
+    height: 100px;
+    border-radius: 0 0 0 100%;
+    top: 0%;
+    left: 100%;
+    transform: translateX(-100%);
+}
+
+#project-3::before {
+    left: 200%;
+}
+
+#project-3::after {
+    left: 300%;
+}
+
+#project-2::after,
+#project-4::after {
+    border-radius: 0 0 100% 0;
+    top: 0%;
+    left: 100%;
+}
+
+#project-2::before,
+#project-4::before {
+    border-radius: 100% 0 0 0;
+    top: 100%;
+    left: 200%;
+    transform: translateX(-100%) translateY(-100%);
+}
+
+#project-4::after {
+    left: 300%;
+}
+
+#project-4::before {
+    left: 400%;
+}
 /* --------------------------------- LINKS -----------------------------------*/
 .links {
     width: 100%;
@@ -525,6 +582,10 @@ h1, h2, h3 {
     justify-content: center;
 }
 
+.icon-holder {
+    padding-bottom: 25px;
+}
+
 /*-------------------------- SCREEN SIZE RESPONSIVENESS ----------------------*/
 
 @media screen and (min-width: 1000px) {
@@ -556,7 +617,6 @@ h1, h2, h3 {
     .content {
         flex-direction: column;
         justify-content: space-evenly;
-        /* min-height: 80vh; */
     }
     
     #projects .left-half,
@@ -578,6 +638,11 @@ h1, h2, h3 {
         transform: translateX(-50%);
         width: 20vh;
         height: auto;
+    }
+
+    .content::before,
+    .content::after {
+        visibility: hidden !important;
     }
 }
 
