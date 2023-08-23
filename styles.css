@@ -3,13 +3,17 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Oxygen, Arial, Helvetica, sans-serif;
+    font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
     height: 100vh;
     background-color: #252526;
 }
 
 div {
     overflow: hidden;
+}
+
+h1, h2, h3 {
+    font-family: 'Open Sans';
 }
 
 .full-width {
@@ -75,6 +79,10 @@ div {
     font-weight: normal;
 }
 
+#my-name {
+    font-family: 'Ubuntu';
+}
+
 /*------------------------------- NAV BAR ------------------------------------*/
 
 .navbar {
@@ -92,6 +100,7 @@ div {
     text-decoration: none;
     z-index: inherit;
     cursor: pointer;
+    font-family: 'Open Sans';
 }
 
 .nav-button:hover {
@@ -235,7 +244,7 @@ div {
     padding-right: 20px;
     margin-top: 5px;
     font-size: 15px;
-    
+    font-family: 'Montserrat', sans-serif;
 }
 
 .career-info ul {
@@ -456,6 +465,7 @@ div {
 .project-name {
     padding-bottom: 0;
     margin-bottom: 5px;
+    font-family: 'Rajdhani';
 }
 
 .subheading {
@@ -488,7 +498,7 @@ div {
 }
 
 .links * {
-    /* margin: 10px; */
+    font-family: 'Ubuntu';
     padding: 5px;
     text-align: center;
 }
@@ -502,7 +512,6 @@ div {
     width: 50px;
     height: 50px;
     overflow: hidden;
-    /* cursor: help; */
 }
 
 .icon-link img {
@@ -525,6 +534,7 @@ div {
 
     #about {
         background-image: url('/assets/background.jpg');
+        font-size: larger;
     }
 
     #about img {
