@@ -91,6 +91,7 @@ div {
     color: #fff;
     text-decoration: none;
     z-index: inherit;
+    cursor: pointer;
 }
 
 .nav-button:hover {
@@ -501,7 +502,7 @@ div {
     width: 50px;
     height: 50px;
     overflow: hidden;
-    cursor: help;
+    /* cursor: help; */
 }
 
 .icon-link img {
@@ -628,6 +629,11 @@ div {
     .project-info {
         width: auto;
         font-size: large;
+    }
+
+    #project-next,
+    #project-prev {
+        visibility: hidden;
     }
 }
 

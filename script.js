@@ -200,7 +200,7 @@ function toggleFeatured(index) {
             // removing the old one
             const old = NavInfo.currentlySelected;
             var oldNav = getNavItem(old);
-            oldNav.style.backgroundColor = "#000";
+            oldNav.style.backgroundColor = null;
             var oldFeatured = getFeaturedItem(old);
             oldFeatured.style.height = 0;
         }
@@ -212,7 +212,7 @@ function toggleFeatured(index) {
     } else if (NavInfo.wasVisible && index == NavInfo.currentlySelected) {
         // closing
         nav = getNavItem(NavInfo.currentlySelected);
-        nav.style.backgroundColor = "#000";
+        nav.style.backgroundColor = null;
         slidingDiv.style.height = '0px';
         
         NavInfo.wasVisible = false;
