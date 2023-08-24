@@ -387,6 +387,7 @@ h1, h2, h3 {
     background-color: #000;
     opacity: 0.30;
     transition: opacity ease 250ms;
+    cursor: pointer;
 }
 
 .slider-nav-hover {
