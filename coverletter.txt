@@ -1,0 +1,5 @@
+I graduated from the University of Maryland College Park with a degree in Computer Science in May 2023 with a GPA of 4.0.
+
+I am a certifed AWS Solutions Architect and have expertise in Python, C, C#, and Java. My current favorite programming language is C. I have hands-on experience with all aspects of the software development lifecycle including software testing. I also have experience with networking and cybersecurity.
+
+In my spare time, I works on video game development and other programming projects. Most video game development is through C# and the unity framework. My other programming skills include C/C++ Ruby, Golang, Rust, Lisp.
