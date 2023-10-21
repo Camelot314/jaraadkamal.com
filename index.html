@@ -1,556 +1,556 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaraad Kamal</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" href="assets/logo_blue.png">
-    <script src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jaraad Kamal</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" href="assets/logo_blue.png">
+  <script src="script.js"></script>
 
-    <!-- For fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans:wght@500&family=Rajdhani:wght@600&family=Ubuntu&display=swap" rel="stylesheet">
+  <!-- For fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans:wght@500&family=Rajdhani:wght@600&family=Ubuntu&display=swap" rel="stylesheet">
 
 </head>
 <body>
   <div class="image-container always-visible full-width screen-full-height">
-    <div class="overlay responsive">
-        <h1 id="my-name">Jaraad Kamal</h1>
-        <p class="subtitle">Software engineer</p>
-    </div>
+  <div class="overlay responsive">
+    <h1 id="my-name">Jaraad Kamal</h1>
+    <p class="subtitle">Software engineer</p>
+  </div>
   </div>
   <nav class="navbar always-visible">
-    <a class="nav-button" id="about-nav" 
-        onclick="toggleFeatured(0)">About</a>
-    <a class="nav-button resume" id="resume-nav" 
-        onclick="toggleFeatured(1)">Resume</a>
-    <a class="nav-button projects" id="projects-nav" 
-        onclick="toggleFeatured(2)">Projects</a>
+  <a class="nav-button" id="about-nav" 
+    onclick="toggleFeatured(0)">About</a>
+  <a class="nav-button resume" id="resume-nav" 
+    onclick="toggleFeatured(1)">Resume</a>
+  <a class="nav-button projects" id="projects-nav" 
+    onclick="toggleFeatured(2)">Projects</a>
   </nav>
 
   <div class="featured section" id="about">
-    <img src="assets/profile.jpg" alt="picture of Jaraad">
-    <div class="text-box">
-        <div class="summary">
-            <p>
-                Jaraad Kamal graduated from the University of Maryland 
-                College Park with a degree in Computer Science in May 2023
-                with a GPA of 4.0.
-            </p>
-            <p>
-                He is a certifed AWS Solutions Architect and
-                has expertise in Python, C, C#, and Java.
-                His current favorite programming language is C.
-                He has hands-on experience with all aspects of the software
-                development lifecycle including software testing. He also 
-                has experience with networking and cybersecurity.
-            </p>
-            <p>
-                In his spare time, he works on video game development and other 
-                programming projects. Most video game development is through C# 
-                and the unity framework. His other programming skills include 
-                C/C++ Ruby, Golang, Rust, Lisp.
-            </p>
-        </div>
-        </div>
+  <img src="assets/profile.jpg" alt="picture of Jaraad">
+  <div class="text-box">
+    <div class="summary">
+      <p>
+        Jaraad Kamal graduated from the University of Maryland 
+        College Park with a degree in Computer Science in May 2023
+        with a GPA of 4.0.
+      </p>
+      <p>
+        He is a certifed AWS Solutions Architect and
+        has expertise in Python, C, C#, and Java.
+        His current favorite programming language is C.
+        He has hands-on experience with all aspects of the software
+        development lifecycle including software testing. He also 
+        has experience with networking and cybersecurity.
+      </p>
+      <p>
+        In his spare time, he works on video game development and other 
+        programming projects. Most video game development is through C# 
+        and the unity framework. His other programming skills include 
+        C/C++ Ruby, Golang, Rust, Lisp.
+      </p>
     </div>
-    <div class="featured section" id="resume">
-        <div id="skills">
-            <div class="section-break full-width">
-                <h2>Skills</h2>
-            </div>
-            <div class="resume-grid" id="skills-grid">
-                <div class="grid-item">
-                    <h3>Certifications</h3>
-                    <div class="between certification">
-                        <p>AWS</p>
-                        <p>Solutions Architect (Associates)</p>
-                    </div>
-                </div>
-                <div class="grid-item">
-                    <h3>Operating Systems</h3>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            Linux
-                        </div>
-                        <div class="star-holder row 5-star"></div>
-                    </div>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            Windows
-                        </div>
-                        <div class="star-holder row 5-star"></div>
-                    </div>
-                </div>
-                <div class="grid-item">
-                    <h3>Coding</h3>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            Python
-                        </div>
-                        <div class="star-holder row 5-star"></div>
-                    </div>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            C/C++
-                        </div>
-                        <div class="star-holder row 5-star"></div>
-                    </div>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            C#
-                        </div>
-                        <div class="star-holder row 5-star"></div>
-                    </div>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            Java
-                        </div>
-                        <div class="star-holder row 4-star"></div>
-                    </div>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            SQL
-                        </div>
-                        <div class="star-holder row 3-star"></div>
-                    </div>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            Golang
-                        </div>
-                        <div class="star-holder row 4-star"></div>
-                    </div>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            JavaScript
-                        </div>
-                        <div class="star-holder row 4-star"></div>
-                    </div>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            Rust
-                        </div>
-                        <div class="star-holder row 3-star"></div>
-                    </div>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            Lisp Languages
-                        </div>
-                        <div class="star-holder row 4-star"></div>
-                    </div>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            x86 Assembly
-                        </div>
-                        <div class="star-holder row 5-star"></div>
-                    </div>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            Dart
-                        </div>
-                        <div class="star-holder row 3-star"></div>
-                    </div>
-                </div>
-                <div class="grid-item">
-                    <h3>Tools</h3>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            Git
-                        </div>
-                        <div class="star-holder row 5-star"></div>
-                    </div>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            Visual Studio
-                        </div>
-                        <div class="star-holder row 5-star"></div>
-                    </div>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            Atlassian Suite
-                        </div>
-                        <div class="star-holder row 4-star"></div>
-                    </div>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            Docker
-                        </div>
-                        <div class="star-holder row 3-star"></div>
-                    </div>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            Jenkins
-                        </div>
-                        <div class="star-holder row 2-star"></div>
-                    </div>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            Eclipse
-                        </div>
-                        <div class="star-holder row 4-star"></div>
-                    </div>
-                    <div class="between skill">
-                        <div class="skill-name">
-                            Subversion
-                        </div>
-                        <div class="star-holder row 4-star"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="career">
-            <div class="section-break full-width">
-                <h2>Career</h2>
-            </div>
-            <div class="timeline resume-grid timeline-grid">
-                <div class="timeline-info career-info exclude-full-width-on-mobile time">
-                    JULY 2022 - JUNE 2023
-                </div>
-                <div class="timeline-info career-info exclude-full-width-on-mobile">
-                    <h3 class="timeline-event-title career-name">
-                        CS Intern @ US Naval Research Lab
-                    </h3>
-                    <p class="subtitle">Washington, D.C.</p>
-                    <ul>
-                        <li>
-                            Developed Python drivers for a variety of scientific 
-                            intrsuments such as waveform generators, power supplies,
-                            etc
-                        </li>
-                        <li>
-                            Used TCP and serial to communicate with devices
-                        </li>
-                        <li>
-                            Modified and extended the Pymeasure library to include
-                            more instruments
-                        </li>
-                        <li>
-                            Created unit tests using the Pytest library
-                        </li>
-                    </ul>
-                </div>
-                <div class="timeline-info career-info exclude-full-width-on-mobile time">
-                    JAN 2023 - MAY 2023
-                </div>
-                <div class="timeline-info career-info exclude-full-width-on-mobile">
-                    <h3 class="timeline-event-title career-name">
-                        Lead Developer @ Neuromotor Control and Learning Lab
-                    </h3>
-                    <p class="subtitle">College Park, MD</p>
-                    <ul>
-                        <li>
-                            Used Unity to develop a virtual testing environment for 
-                            simulating interactive experiments
-                        </li>
-                        <li>
-                            Worked with customer to gather requirements and 
-                            specifications
-                        </li>
-                        <li>
-                            Collaborated with a team of developers in an agile 
-                            environment
-                        </li>
-                        <li>
-                            Wrote extensive documentation for software that was created
-                        </li>
-                        <li>
-                            Created webserver and endpoints to act as middleware between
-                            separate applications
-                        </li>
-                    </ul>
-                </div>
-                <div class="timeline-info career-info exclude-full-width-on-mobile time">
-                    JUNE 2022 - JULY 2022
-                </div>
-                <div class="timeline-info career-info exclude-full-width-on-mobile">
-                    <h3 class="timeline-event-title career-name">
-                        CS Intern @ Advanced Simulation Technology Inc
-                    </h3>
-                    <p class="subtitle">Herndon, VA</p>
-                    <ul>
-                        <li>
-                            Modified automated test scripts to use in Jenkins Pipeline
-                        </li>
-                        <li>
-                            Utilized Golang for developing single sign on 
-                            authentication with SAML
-                        </li>
-                        <li>
-                            Created service endpoints to API for developer use
-                        </li>
-                        <li>
-                            Added quality of life features to a Slackbot for internal 
-                            testing
-                        </li>
-                        <li>
-                            Used C++ and OpenVR library for VR development
-                        </li>
-                    </ul>
-                </div>
-                <div class="timeline-info career-info exclude-full-width-on-mobile time">
-                    JULY 2021 - AUGUST 2021
-                </div>
-                <div class="timeline-info career-info exclude-full-width-on-mobile">
-                    <h3 class="timeline-event-title career-name">
-                        Unity Video Game Development
-                    </h3>
-                    <p class="subtitle">Bethesda, MD</p>
-                    <ul>
-                        <li>
-                            Used C# programming and Unity Framework to design multiple 
-                            video games
-                        </li>
-                        <li>
-                            Gained experience in .NET Development and Visual Studio
-                        </li>
-                        <li>
-                            Worked with Git for version control
-                        </li>
-                        <li>
-                            Used self-imposed weekly deadlines for development
-                        </li>
-                </div>
-                <div class="timeline-info career-info exclude-full-width-on-mobile time">
-                    MAY 2021 - JUNE 2021
-                </div>
-                <div class="timeline-info career-info exclude-full-width-on-mobile">
-                    <h3 class="timeline-event-title career-name">
-                        Java Development
-                    </h3>
-                    <p class="subtitle">Bethesda, MD</p>
-                    <ul>
-                        <li>
-                            Used Java to create a Discord Bot and Java Swing Framework 
-                            to develope multiple games
-                        </li>
-                        <li>
-                            Focused on JUnit Testing for test coverage
-                        </li>
-                        <li>
-                            Gained experience in webserver management and Linux
-                        </li>
-                    </ul>
-                </div>
-                <div class="timeline-info career-info exclude-full-width-on-mobile time">
-                    MAY 2020 - AUGUST 2020
-                </div>
-                <div class="timeline-info career-info exclude-full-width-on-mobile">
-                    <h3 class="timeline-event-title career-name">
-                        App Developer @ Camel App Productions
-                    </h3>
-                    <p class="subtitle">Bethesda, MD</p>
-                    <ul>
-                        <li>
-                            Used Andriod Studio framework to create Mobile Apps
-                        </li>
-                        <li>
-                            Programmed in Dart and used Flutter Framework
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div id="education">
-            <div class="section-break full-width">
-                <h2>Education</h2>
-            </div>
-            <div class="timeline resume-grid timeline-grid">
-                <div class="timeline-info exclude-full-width-on-mobile time">
-                    AUGUST 2019 - MAY 2023
-                </div>
-                <div class="timeline-info exclude-full-width-on-mobile">
-                    <h3 class="timeline-event-title career-name">
-                        University of Maryland College Park
-                    </h3>
-                    <p class="subtitle">College Park, MD</p>
-                    <p>Bachelor's in Computer Science</p>
-                    <p>Summa Cum Laude</p>
-                </div>
-            </div>
-        </div>
-        <div id="resume-download">
-            <a class="button" href="assets/Jaraad Kamal Resume.pdf" download>
-                Download
-            </a>
-        </div>
     </div>
-    <div class="featured section" id="projects">
-            <div class="slider-wrapper">
-                <div class="slider" id="project-slider">
-                    <div id="project-1" class="content between">
-                        <div class="left-half">
-                            <h1 class="project-name">JCaml</h1>
-                            <div class="subheading">
-                                <strong>Link</strong>
-                                <a 
-                                    href="https://github.com/Camelot314/JCaml"
-                                    target="_blank">
-                                    Github.com
-                                </a>
-                            </div>
-                            <p class="project-info">
-                                This is my compilers project that focused on 
-                                creating a programming language called JCaml.
-                                It is a functional programming language that is
-                                similar to Racket.
-                            </p>
-                            <p class="project-info">
-                                The language is written in Racket, C and x86 
-                                Assembly. This was a massive compilers project.
-                            </p>
-                        </div>
-                        <div class="right-half">
-                            <a 
-                                href="https://github.com/Camelot314/JCaml"
-                                target="_blank">
-                                <img src="assets/camel.png" alt="picture of camel">
-                            </a>
-                        </div>
-                    </div>
-                    <div id="project-2" class="content between">
-                        <div class="left-half">
-                            <h1 class="project-name">Ant Optimization</h2>
-                            <div class="subheading">
-                                <strong>Link</strong>
-                                <a
-                                    href="https://github.com/Camelot314/ant-colony-optimization"
-                                    target="_blank">
-                                    GitHub.com
-                                </a>
-                            </div>
-                            <p class="project-info">
-                                This project creates an approximate solution to 
-                                the traveling salesman problem in polynomial time.
-                            </p>
-                            <p class="project-info">
-                                The program uses my approach of <i>Ant Colony 
-                                Optimization</i> which is an algorithm that 
-                                models ants foraging.
-                            </p>
-                        </div>
-                        <div class="right-half">
-                            <a
-                                href="https://github.com/Camelot314/ant-colony-optimization"
-                                target="_blank">
-                                <img src="assets/nodes.png" 
-                                    alt="picture of graph with nodes">
-                            </a>
-                        </div>
-                    </div>
-                    <div id="project-3" class="content between">
-                        <div class="left-half">
-                            <h1 class="project-name">Rubik's Analysis</h1>
-                            <div class="subheading">
-                                <strong>Link</strong>
-                                <a 
-                                    href="https://github.com/Camelot314/rubiks_analysis/"
-                                    target="_blank">
-                                    Github.com
-                                </a>
-                            </div>
-                            <p class="project-info">
-                                I created this project as a simple tutorial for 
-                                introductory data science. 
-                            </p>
-                            <p class="project-info">
-                                It is a project that 
-                                explored Rubik's cube competitons and analyzed 
-                                which competitions were performing statistically 
-                                worse.
-                            </p>
-                        </div>
-                        <div class="right-half">
-                            <a 
-                                href="https://github.com/Camelot314/rubiks_analysis/"
-                                target="_blank">
-                                <img src="assets/rubik.png" 
-                                    alt="picture of rubik's cube">
-                            </a>
-                        </div>
-                    </div>
-                    <div id="project-4" class="content between">
-                        <div class="left-half">
-                            <h1 class="project-name">Block Craft</h1>
-                            <div class="subheading">
-                                <strong>Link</strong>
-                                <a 
-                                    href="https://github.com/Camelot314/BlockCraft"
-                                    target="_blank">
-                                    Github.com
-                                </a>
-                                <a href="assets/Block_Craft_1_8_Setup.exe" download>
-                                    Windows Download
-                                </a>
-                            </div>
-                            <p class="project-info">
-                                This is a video game I created that similar to
-                                the game MineCraft. It is a terraforming and 
-                                exploration based game.
-                            </p>
-                            <p class="project-info">
-                                It is written in C# and uses the Unity game 
-                                engine. It is the largest project that I have 
-                                ever completed.
-                            </p>
-                        </div>
-                        <div class="right-half">
-                            <a 
-                                href="https://github.com/Camelot314/BlockCraft"
-                                target="_blank">
-                                <img src="assets/Block_Craft_Icon_Sized.png" 
-                                    alt="picture of rubik's cube">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slider-nav exclude-full-width-on-mobile">
-                    <a onclick="projectJump(0)"></a>
-                    <a onclick="projectJump(1)"></a>
-                    <a onclick="projectJump(2)"></a>
-                    <a onclick="projectJump(3)"></a>
-                </div>
-                <img src="assets/back.png" id="project-prev" 
-                    onclick="prevProject()" 
-                    alt="back button">
-                <img src="assets/next.png" 
-                    id="project-next" 
-                    onclick="nextProject()"
-                    alt="next button">
-            </div>
+  </div>
+  <div class="featured section" id="resume">
+    <div id="skills">
+      <div class="section-break full-width">
+        <h2>Skills</h2>
+      </div>
+      <div class="resume-grid" id="skills-grid">
+        <div class="grid-item">
+          <h3>Certifications</h3>
+          <div class="between certification">
+            <p>AWS</p>
+            <p>Solutions Architect (Associates)</p>
+          </div>
         </div>
+        <div class="grid-item">
+          <h3>Operating Systems</h3>
+          <div class="between skill">
+            <div class="skill-name">
+              Linux
+            </div>
+            <div class="star-holder row 5-star"></div>
+          </div>
+          <div class="between skill">
+            <div class="skill-name">
+              Windows
+            </div>
+            <div class="star-holder row 5-star"></div>
+          </div>
+        </div>
+        <div class="grid-item">
+          <h3>Coding</h3>
+          <div class="between skill">
+            <div class="skill-name">
+              Python
+            </div>
+            <div class="star-holder row 5-star"></div>
+          </div>
+          <div class="between skill">
+            <div class="skill-name">
+              C/C++
+            </div>
+            <div class="star-holder row 5-star"></div>
+          </div>
+          <div class="between skill">
+            <div class="skill-name">
+              C#
+            </div>
+            <div class="star-holder row 5-star"></div>
+          </div>
+          <div class="between skill">
+            <div class="skill-name">
+              Java
+            </div>
+            <div class="star-holder row 4-star"></div>
+          </div>
+          <div class="between skill">
+            <div class="skill-name">
+              SQL
+            </div>
+            <div class="star-holder row 3-star"></div>
+          </div>
+          <div class="between skill">
+            <div class="skill-name">
+              Golang
+            </div>
+            <div class="star-holder row 4-star"></div>
+          </div>
+          <div class="between skill">
+            <div class="skill-name">
+              JavaScript
+            </div>
+            <div class="star-holder row 4-star"></div>
+          </div>
+          <div class="between skill">
+            <div class="skill-name">
+              Rust
+            </div>
+            <div class="star-holder row 3-star"></div>
+          </div>
+          <div class="between skill">
+            <div class="skill-name">
+              Lisp Languages
+            </div>
+            <div class="star-holder row 4-star"></div>
+          </div>
+          <div class="between skill">
+            <div class="skill-name">
+              x86 Assembly
+            </div>
+            <div class="star-holder row 5-star"></div>
+          </div>
+          <div class="between skill">
+            <div class="skill-name">
+              Dart
+            </div>
+            <div class="star-holder row 3-star"></div>
+          </div>
+        </div>
+        <div class="grid-item">
+          <h3>Tools</h3>
+          <div class="between skill">
+            <div class="skill-name">
+              Git
+            </div>
+            <div class="star-holder row 5-star"></div>
+          </div>
+          <div class="between skill">
+            <div class="skill-name">
+              Visual Studio
+            </div>
+            <div class="star-holder row 5-star"></div>
+          </div>
+          <div class="between skill">
+            <div class="skill-name">
+              Atlassian Suite
+            </div>
+            <div class="star-holder row 4-star"></div>
+          </div>
+          <div class="between skill">
+            <div class="skill-name">
+              Docker
+            </div>
+            <div class="star-holder row 3-star"></div>
+          </div>
+          <div class="between skill">
+            <div class="skill-name">
+              Jenkins
+            </div>
+            <div class="star-holder row 2-star"></div>
+          </div>
+          <div class="between skill">
+            <div class="skill-name">
+              Eclipse
+            </div>
+            <div class="star-holder row 4-star"></div>
+          </div>
+          <div class="between skill">
+            <div class="skill-name">
+              Subversion
+            </div>
+            <div class="star-holder row 4-star"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="career">
+      <div class="section-break full-width">
+        <h2>Career</h2>
+      </div>
+      <div class="timeline resume-grid timeline-grid">
+        <div class="timeline-info career-info exclude-full-width-on-mobile time">
+          JULY 2022 - JUNE 2023
+        </div>
+        <div class="timeline-info career-info exclude-full-width-on-mobile">
+          <h3 class="timeline-event-title career-name">
+            CS Intern @ US Naval Research Lab
+          </h3>
+          <p class="subtitle">Washington, D.C.</p>
+          <ul>
+            <li>
+              Developed Python drivers for a variety of scientific 
+              intrsuments such as waveform generators, power supplies,
+              etc
+            </li>
+            <li>
+              Used TCP and serial to communicate with devices
+            </li>
+            <li>
+              Modified and extended the Pymeasure library to include
+              more instruments
+            </li>
+            <li>
+              Created unit tests using the Pytest library
+            </li>
+          </ul>
+        </div>
+        <div class="timeline-info career-info exclude-full-width-on-mobile time">
+          JAN 2023 - MAY 2023
+        </div>
+        <div class="timeline-info career-info exclude-full-width-on-mobile">
+          <h3 class="timeline-event-title career-name">
+            Lead Developer @ Neuromotor Control and Learning Lab
+          </h3>
+          <p class="subtitle">College Park, MD</p>
+          <ul>
+            <li>
+              Used Unity to develop a virtual testing environment for 
+              simulating interactive experiments
+            </li>
+            <li>
+              Worked with customer to gather requirements and 
+              specifications
+            </li>
+            <li>
+              Collaborated with a team of developers in an agile 
+              environment
+            </li>
+            <li>
+              Wrote extensive documentation for software that was created
+            </li>
+            <li>
+              Created webserver and endpoints to act as middleware between
+              separate applications
+            </li>
+          </ul>
+        </div>
+        <div class="timeline-info career-info exclude-full-width-on-mobile time">
+          JUNE 2022 - JULY 2022
+        </div>
+        <div class="timeline-info career-info exclude-full-width-on-mobile">
+          <h3 class="timeline-event-title career-name">
+            CS Intern @ Advanced Simulation Technology Inc
+          </h3>
+          <p class="subtitle">Herndon, VA</p>
+          <ul>
+            <li>
+              Modified automated test scripts to use in Jenkins Pipeline
+            </li>
+            <li>
+              Utilized Golang for developing single sign on 
+              authentication with SAML
+            </li>
+            <li>
+              Created service endpoints to API for developer use
+            </li>
+            <li>
+              Added quality of life features to a Slackbot for internal 
+              testing
+            </li>
+            <li>
+              Used C++ and OpenVR library for VR development
+            </li>
+          </ul>
+        </div>
+        <div class="timeline-info career-info exclude-full-width-on-mobile time">
+          JULY 2021 - AUGUST 2021
+        </div>
+        <div class="timeline-info career-info exclude-full-width-on-mobile">
+          <h3 class="timeline-event-title career-name">
+            Unity Video Game Development
+          </h3>
+          <p class="subtitle">Bethesda, MD</p>
+          <ul>
+            <li>
+              Used C# programming and Unity Framework to design multiple 
+              video games
+            </li>
+            <li>
+              Gained experience in .NET Development and Visual Studio
+            </li>
+            <li>
+              Worked with Git for version control
+            </li>
+            <li>
+              Used self-imposed weekly deadlines for development
+            </li>
+        </div>
+        <div class="timeline-info career-info exclude-full-width-on-mobile time">
+          MAY 2021 - JUNE 2021
+        </div>
+        <div class="timeline-info career-info exclude-full-width-on-mobile">
+          <h3 class="timeline-event-title career-name">
+            Java Development
+          </h3>
+          <p class="subtitle">Bethesda, MD</p>
+          <ul>
+            <li>
+              Used Java to create a Discord Bot and Java Swing Framework 
+              to develope multiple games
+            </li>
+            <li>
+              Focused on JUnit Testing for test coverage
+            </li>
+            <li>
+              Gained experience in webserver management and Linux
+            </li>
+          </ul>
+        </div>
+        <div class="timeline-info career-info exclude-full-width-on-mobile time">
+          MAY 2020 - AUGUST 2020
+        </div>
+        <div class="timeline-info career-info exclude-full-width-on-mobile">
+          <h3 class="timeline-event-title career-name">
+            App Developer @ Camel App Productions
+          </h3>
+          <p class="subtitle">Bethesda, MD</p>
+          <ul>
+            <li>
+              Used Andriod Studio framework to create Mobile Apps
+            </li>
+            <li>
+              Programmed in Dart and used Flutter Framework
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="education">
+      <div class="section-break full-width">
+        <h2>Education</h2>
+      </div>
+      <div class="timeline resume-grid timeline-grid">
+        <div class="timeline-info exclude-full-width-on-mobile time">
+          AUGUST 2019 - MAY 2023
+        </div>
+        <div class="timeline-info exclude-full-width-on-mobile">
+          <h3 class="timeline-event-title career-name">
+            University of Maryland College Park
+          </h3>
+          <p class="subtitle">College Park, MD</p>
+          <p>Bachelor's in Computer Science</p>
+          <p>Summa Cum Laude</p>
+        </div>
+      </div>
+    </div>
+    <div id="resume-download">
+      <a class="button" href="assets/Jaraad Kamal Resume.pdf" download>
+        Download
+      </a>
+    </div>
+  </div>
+  <div class="featured section" id="projects">
+      <div class="slider-wrapper">
+        <div class="slider" id="project-slider">
+          <div id="project-1" class="content between">
+            <div class="left-half">
+              <h1 class="project-name">JCaml</h1>
+              <div class="subheading">
+                <strong>Link</strong>
+                <a 
+                  href="https://github.com/Camelot314/JCaml"
+                  target="_blank">
+                  Github.com
+                </a>
+              </div>
+              <p class="project-info">
+                This is my compilers project that focused on 
+                creating a programming language called JCaml.
+                It is a functional programming language that is
+                similar to Racket.
+              </p>
+              <p class="project-info">
+                The language is written in Racket, C and x86 
+                Assembly. This was a massive compilers project.
+              </p>
+            </div>
+            <div class="right-half">
+              <a 
+                href="https://github.com/Camelot314/JCaml"
+                target="_blank">
+                <img src="assets/camel.png" alt="picture of camel">
+              </a>
+            </div>
+          </div>
+          <div id="project-2" class="content between">
+            <div class="left-half">
+              <h1 class="project-name">Ant Optimization</h2>
+              <div class="subheading">
+                <strong>Link</strong>
+                <a
+                  href="https://github.com/Camelot314/ant-colony-optimization"
+                  target="_blank">
+                  GitHub.com
+                </a>
+              </div>
+              <p class="project-info">
+                This project creates an approximate solution to 
+                the traveling salesman problem in polynomial time.
+              </p>
+              <p class="project-info">
+                The program uses my approach of <i>Ant Colony 
+                Optimization</i> which is an algorithm that 
+                models ants foraging.
+              </p>
+            </div>
+            <div class="right-half">
+              <a
+                href="https://github.com/Camelot314/ant-colony-optimization"
+                target="_blank">
+                <img src="assets/nodes.png" 
+                  alt="picture of graph with nodes">
+              </a>
+            </div>
+          </div>
+          <div id="project-3" class="content between">
+            <div class="left-half">
+              <h1 class="project-name">Rubik's Analysis</h1>
+              <div class="subheading">
+                <strong>Link</strong>
+                <a 
+                  href="https://github.com/Camelot314/rubiks_analysis/"
+                  target="_blank">
+                  Github.com
+                </a>
+              </div>
+              <p class="project-info">
+                I created this project as a simple tutorial for 
+                introductory data science. 
+              </p>
+              <p class="project-info">
+                It is a project that 
+                explored Rubik's cube competitons and analyzed 
+                which competitions were performing statistically 
+                worse.
+              </p>
+            </div>
+            <div class="right-half">
+              <a 
+                href="https://github.com/Camelot314/rubiks_analysis/"
+                target="_blank">
+                <img src="assets/rubik.png" 
+                  alt="picture of rubik's cube">
+              </a>
+            </div>
+          </div>
+          <div id="project-4" class="content between">
+            <div class="left-half">
+              <h1 class="project-name">Block Craft</h1>
+              <div class="subheading">
+                <strong>Link</strong>
+                <a 
+                  href="https://github.com/Camelot314/BlockCraft"
+                  target="_blank">
+                  Github.com
+                </a>
+                <a href="assets/Block_Craft_1_8_Setup.exe" download>
+                  Windows Download
+                </a>
+              </div>
+              <p class="project-info">
+                This is a video game I created that similar to
+                the game MineCraft. It is a terraforming and 
+                exploration based game.
+              </p>
+              <p class="project-info">
+                It is written in C# and uses the Unity game 
+                engine. It is the largest project that I have 
+                ever completed.
+              </p>
+            </div>
+            <div class="right-half">
+              <a 
+                href="https://github.com/Camelot314/BlockCraft"
+                target="_blank">
+                <img src="assets/Block_Craft_Icon_Sized.png" 
+                  alt="picture of rubik's cube">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="slider-nav exclude-full-width-on-mobile">
+          <a onclick="projectJump(0)"></a>
+          <a onclick="projectJump(1)"></a>
+          <a onclick="projectJump(2)"></a>
+          <a onclick="projectJump(3)"></a>
+        </div>
+        <img src="assets/back.png" id="project-prev" 
+          onclick="prevProject()" 
+          alt="back button">
+        <img src="assets/next.png" 
+          id="project-next" 
+          onclick="nextProject()"
+          alt="next button">
+      </div>
+    </div>
 
+  </div>
+  <div class="section always-visible" id="final-section">
+  <div class="links">
+    <h1>Links</h1>
+    <div class="icon-holder">
+      <a href="https://www.linkedin.com/in/jaraad-kamal/" 
+        class="icon-link"
+        target="_blank"
+        title="LinkedIn">
+        <img src="/assets/linkedin-icon.png" 
+          class="full-width full-height"
+          alt="linkedin button">
+      </a>
+      <a href="https://github.com/Camelot314" 
+        class="icon-link"
+        target="_blank"
+        title="GitHub">
+        <img src="/assets/github-icon.png" 
+          class="full-width full-height"
+          alt="GitHub button">
+      </a>
+      <a href="mailto:kjaraad@gmail.com" 
+        class="icon-link"
+        target="_blank"
+        title="Email">
+        <img src="/assets/mail-icon.png" 
+          class="full-width full-height"
+          alt="email button">
+      </a>
     </div>
-    <div class="section always-visible" id="final-section">
-    <div class="links">
-        <h1>Links</h1>
-        <div class="icon-holder">
-            <a href="https://www.linkedin.com/in/jaraad-kamal/" 
-                class="icon-link"
-                target="_blank"
-                title="LinkedIn">
-                <img src="/assets/linkedin-icon.png" 
-                    class="full-width full-height"
-                    alt="linkedin button">
-            </a>
-            <a href="https://github.com/Camelot314" 
-                class="icon-link"
-                target="_blank"
-                title="GitHub">
-                <img src="/assets/github-icon.png" 
-                    class="full-width full-height"
-                    alt="GitHub button">
-            </a>
-            <a href="mailto:kjaraad@gmail.com" 
-                class="icon-link"
-                target="_blank"
-                title="Email">
-                <img src="/assets/mail-icon.png" 
-                    class="full-width full-height"
-                    alt="email button">
-            </a>
-        </div>
-    </div>
+  </div>
 </body>
 </html>
