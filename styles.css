@@ -15,6 +15,10 @@ body {
     background-color: var(--background-dark);
 }
 
+body * {
+    box-sizing: border-box;
+}
+
 div {
     overflow: hidden;
 }
@@ -648,6 +652,11 @@ h1, h2, h3 {
     .content::after {
         visibility: hidden !important;
     }
+/* 
+    .slider .content {
+        padding-right: 1.5rem;
+        padding-left: 2rem;
+    } */
 }
 
 /* Media query for desktop has width below 700 */
