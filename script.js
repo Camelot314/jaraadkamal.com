@@ -1,6 +1,5 @@
 /********************** GLOBALS ***********************************************/
 function initialize () {
-    console.log("hellO");
     shrinkFeatured();
     setUpStars();
 }
