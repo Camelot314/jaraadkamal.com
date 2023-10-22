@@ -1,11 +1,18 @@
-
+:root {
+    /* 497AA6 */
+    --accent-color: #283040;
+    --accent-bright: #93ABD9;
+    /* --accent-bright: #497AA6; */
+    --background-dark: #252526;
+    --heading-color: var(--accent-color);
+}
 
 body {
     margin: 0;
     padding: 0;
     font-family: 'Ubuntu', Arial, Helvetica, sans-serif;
     height: 100vh;
-    background-color: #252526;
+    background-color: var(--background-dark);
 }
 
 div {
@@ -37,12 +44,18 @@ h1, h2, h3 {
 .image-container {
     z-index: 8;
     position: relative;
-    background-image: url("/assets/banner.jpg");
+    background-image: url("/assets/banner_vert.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
+@media screen and (min-width: 825px) {
+    .image-container {
+        background-image: url("/assets/banner_horz.JPG");
+        background-position: 50% 10%;
+    }
+}
 /*--------------------------IMAGE OVERLAYS------------------------------------*/
 .overlay {
     /* div on top of the image */
@@ -85,7 +98,7 @@ h1, h2, h3 {
 
 /*------------------------------- NAV BAR ------------------------------------*/
 
-.navbar {
+#navbar {
     display: flex;
     background-color: #000;
     position: relative;
@@ -107,7 +120,7 @@ h1, h2, h3 {
     background-color: #222;
 }
 
-.navbar a {
+#navbar a {
     font-weight: bold;
     font-size: 20px;
 }
@@ -115,7 +128,6 @@ h1, h2, h3 {
 
 /*--------------------------------------SECTIONS ----------------------------*/
 .section {
-    background-color: #252526;
     height: auto;
     display: flex;
     flex-direction: row;
@@ -162,7 +174,7 @@ h1, h2, h3 {
 }
 
 #resume-download {
-    background-color: #252526;
+    background-color: #00000000;
     width: 100%;
     padding: 20px;
 }
@@ -173,6 +185,11 @@ h1, h2, h3 {
     margin-left: 50%;
     transform: translateX(-50%);
     text-decoration: none;
+    font-weight: bold;
+}
+
+.star {
+    filter: saturate(0%) brightness(2000%);
 }
 
 .section-break {
@@ -181,7 +198,7 @@ h1, h2, h3 {
 }
 
 .section-break h2 {
-    background-color: #36546e;
+    background-color: var(--heading-color);
     padding: 5px 15px 5px 15px;
     margin-left: 20px;
     display: inline;
@@ -198,19 +215,15 @@ h1, h2, h3 {
     padding-top: 0;
 }
 
-
 #skills-grid .between {
     align-items: center;
     margin-top: 7px;
     margin-bottom: 7px;
 }
 
-.star-holder img {
-    width: 15px;
-    margin-right: 2px;
-    margin-left: 2px;
-    align-items: right;
-    float: right;
+.star-holder {
+    font-family: 'Zen Maru Gothic', serif;
+    text-align: right;
 }
 
 .certification p {
@@ -218,7 +231,7 @@ h1, h2, h3 {
     padding: 0;
 }
 .certification:hover {
-    color: #497AA6;
+    color: var(--accent-bright);
 }
 
 
@@ -274,7 +287,7 @@ h1, h2, h3 {
     width:  15px;
     height: 15px;
     border-radius: 50%;
-    background-color: #252526;
+    background-color: var(--background-dark);
     border: white;
     border-style: solid;
     border-width: 3px;
@@ -288,10 +301,6 @@ h1, h2, h3 {
 
 .timeline-grid {
     grid-template-columns: 30% 70%;
-}
-
-#education {
-    background-color: #252526;
 }
 
 @media screen and (max-width: 825px) {
@@ -465,7 +474,7 @@ h1, h2, h3 {
 
 .subheading a {
     text-decoration: None;
-    color: #497AA6;
+    color: var(--accent-color);
     padding-left: 10px;
 }
 
@@ -549,10 +558,14 @@ h1, h2, h3 {
     left: 400%;
 }
 /* --------------------------------- LINKS -----------------------------------*/
+#final-section {
+    transition: height 0.2s;
+}
+
 .links {
     width: 100%;
     padding: 10px;
-    background-color: #497AA6;
+    background-color: var(--accent-color);
 }
 
 .links * {
@@ -575,6 +588,7 @@ h1, h2, h3 {
 .icon-link img {
     padding: 0;
     margin: 0;
+    filter: invert(1);
 }
 
 .links .grid-item {
@@ -595,8 +609,19 @@ h1, h2, h3 {
     }
 
     #about {
-        background-image: url('/assets/background.jpg');
         font-size: larger;
+    }
+
+    #about::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 800px solid transparent;
+        border-right: 0px solid transparent;
+        border-bottom: 200px solid var( --accent-color);
+        bottom: 0;
+        right: 0;
     }
 
     #about img {
@@ -722,7 +747,7 @@ h1, h2, h3 {
 
     .responsive {
         position: absolute;
-        top: 400px;
+        top: 50%;
         overflow: hidden;
     }
 
@@ -745,7 +770,7 @@ h1, h2, h3 {
     box-shadow: none;
 
     /* Add any other custom styling you desire */
-    background-color: #252526;
+    background-color: var(--background-dark);
     color: #fff;
     padding: 10px 25px;
     border: 2px solid white;

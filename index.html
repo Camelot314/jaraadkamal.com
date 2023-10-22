@@ -10,18 +10,19 @@
 
   <!-- For fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans:wght@500&family=Rajdhani:wght@600&family=Ubuntu&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans:wght@500&family=Rajdhani:wght@600&family=Ubuntu&family=Zen+Maru+Gothic:wght@900&display=swap" rel="stylesheet"> 
 
 </head>
 <body>
-  <div class="image-container always-visible full-width screen-full-height">
+  <div class="image-container always-visible full-width screen-full-height"
+    id="main-banner">
   <div class="overlay responsive">
     <h1 id="my-name">Jaraad Kamal</h1>
     <p class="subtitle">Software engineer</p>
   </div>
   </div>
-  <nav class="navbar always-visible">
+  <nav class="always-visible" id="navbar">
   <a class="nav-button" id="about-nav" 
     onclick="toggleFeatured(0)">About</a>
   <a class="nav-button resume" id="resume-nav" 

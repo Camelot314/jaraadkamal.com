@@ -1,6 +1,5 @@
 /********************** GLOBALS ***********************************************/
 function initialize () {
-    console.log("hellO");
     shrinkFeatured();
     setUpStars();
 }
@@ -34,14 +33,24 @@ let ProjSlider = {
 
 /***************************** LISTENERS **************************************/
 window.onload = function() {
-    shrinkFeatured();
+    setMainBannerHeight();
     setUpStars();
     setUpHighlighting();
+    shrinkFeatured();
 }
 window.addEventListener('resize', resizeWindow);
 document.addEventListener("DOMContentLoaded", setUpProjectSlider);
 
 /*************************** CORE FUNCTIONS ***********************************/
+
+function setMainBannerHeight() {
+    var navbar = document.getElementById("navbar");
+    var mainBanner = document.getElementById("main-banner");
+    let navbarHeight = navbar.clientHeight;
+    let windowHeight = window.innerHeight;
+    
+    mainBanner.style.height = (windowHeight - navbarHeight + 1) + "px";
+}
 
 /**
 * Sets up all the stars in the resume skills section
@@ -54,19 +63,20 @@ function setUpStars() {
         if (numStars == null) {
             return;
         }
-        const numEmpty = 5 - numStars;
+        let starString = "";
         for (var j = 0; j < 5; j ++) {
-            const star = new Image();
-            if (j < numEmpty) {
-                star.src = "assets/star-empty.png";
-                star.className = "empty";
-                allStars[i].appendChild(star);
-            } else {
-                star.src = "assets/star.png";
-                star.className = "filled";
-                allStars[i].appendChild(star);
+
+            if (j < numStars) {
+                starString += "★";
+            }  else {
+                starString += "☆";
+            }
+            if (j < 5) {
+                starString += " ";
             }
         }
+        let text = document.createTextNode(starString);
+        allStars[i].appendChild(text);
     }
 }
 
@@ -179,6 +189,23 @@ function getItem(index, type) {
     }
 }
 
+function scrollFeatured() {
+    let mainBannerHeight = document.getElementById("main-banner").clientHeight;
+    var footer = document.getElementById("final-section");
+
+    if (document.body.clientHeight < (2 * mainBannerHeight)) {
+        footer.style.height = mainBannerHeight + "px";
+    }
+
+    window.scroll({
+        top: mainBannerHeight + 1,
+        behavior: "smooth"
+    });
+
+    setTimeout(function () {
+        footer.style.height = "auto";
+    }, 300);
+}
 
 function toggleFeatured(index) {
     var slidingDiv = getFeaturedItem(index);
@@ -192,9 +219,12 @@ function toggleFeatured(index) {
 
     // was invisible.
     if (!NavInfo.wasVisible || NavInfo.currentlySelected != index) {
+        scrollFeatured();
         // doing the nav 
         nav = getNavItem(index);
-        nav.style.backgroundColor = "#497AA6";
+        let navChosenColor = window.getComputedStyle(document.body)
+            .getPropertyValue("--accent-color");
+        nav.style.backgroundColor = navChosenColor;
 
         if (NavInfo.currentlySelected != index) {
             // removing the old one
@@ -220,28 +250,40 @@ function toggleFeatured(index) {
 }
 
 function highlightSkill(section) {
-    section.style.color = "#497AA6";
-    var starHolder = section.children[1];
-    for (var i = 0; i < 5; i ++) {
-        const child = starHolder.children[i];
-        if (child.className == "empty") {
-            child.src = "assets/star-empty-blue.png";
-        } else if (child.className == "filled") {
-            child.src = "assets/star-blue.png";
-        }
-    }
+    let highlightColor = window.getComputedStyle(document.body)
+        .getPropertyValue('--accent-bright');
+    section.style.color = highlightColor;
+    // var starHolder = section.children[1];
+    // for (var i = 0; i < 5; i ++) {
+    //     const child = starHolder.children[i];
+    //     setFilter(child, highlightColor);
+    // }
+}
+
+function setFilter(element, color) {
+    let rgba = colorToRgba(color);
+    let hsl = rgbToHsl(...rgba.slice(0,3));
+
+    // logic from https://stackoverflow.com/a/29958459
+    let hueDiff = hsl[0];
+    let satShift = 0.5 * hsl[1];
+    let lightShift = 2 * hsl[2];
+
+    filter = `hue-rotate(${hueDiff}deg) saturate(${satShift}%) brightness(${lightShift}%)`;
+    element.style.filter = filter;
+    element.style.webkitFilter = filter;
+
+}
+
+
+function removeFilter(element) {
+    filter = `saturate(0%) brightness(2000%)`;
+    element.style.filter = filter;
+    element.style.webkitFilter = filter;
 }
 
 function unhighlightSkill(section) {
     section.style.color = null;
-    var starHolder = section.children[1];
-    for (var child=starHolder.firstChild; child !== null; child=child.nextSibling) {
-        if (child.className == "empty") {
-            child.src = "assets/star-empty.png";
-        } else if (child.className == "filled") {
-            child.src = "assets/star.png";
-        }
-    }
 }
 
 // PROJECTS
@@ -309,4 +351,101 @@ function nextProject() {
 function prevProject() {
     const current = ProjSlider.highlited;
     projectJump((current + 3) % 4);
+}
+
+function colorToRgba(colorString) {
+    if (colorString.startsWith("#")) {
+        let hex = colorString.substring(1);
+        if (hex.length === 3) {
+            hex = hex
+                .split("")
+                .map((char) => char + char)
+                .join("");
+        } 
+        if (hex.length === 8) {
+            const a = parseInt(hex.slice(6, 8), 16) / 255;
+            const r = parseInt(hex.slice(0, 2), 16);
+            const g = parseInt(hex.slice(2, 4), 16);
+            const b = parseInt(hex.slice(4, 6), 16);
+            return [r, g, b, a];
+        } else {
+            const bigint = parseInt(hex, 16);
+            const r = (bigint >> 16) & 255;
+            const g = (bigint >> 8) & 255;
+            const b = bigint & 255;
+            return [r, g, b, 1]; // Alpha is set to 1 for hex colors
+        }
+    } else if (colorString.startsWith("rgba")) {
+        const rgbaValues = colorString.substring(colorString.indexOf("(") 
+            + 1, colorString.lastIndexOf(")")).split(",");
+        if (rgbaValues.length === 4) {
+            return rgbaValues.map((value, index) => (index === 3 ? 
+                parseFloat(value) : parseInt(value)));
+        }
+    } else if (colorString.startsWith("rgb")) {
+        const matches = colorString.match(/\d+/g);
+        if (matches.length === 3 || matches.length === 4) {
+            const alpha = matches[3] ? parseFloat(matches[3]) : 1;
+            return [...matches.slice(0, 3).map(Number), alpha];
+        }
+    }
+    return null;
+}
+
+function rgbToHue(r, g, b) {
+    const min = Math.min(r, g, b);
+    const max = Math.max(r, g, b);
+    let hue;
+
+    if (max === 0) {
+      return 0; // Return 0 for black
+    } else if (min === max) {
+      return 0; // Return 0 for grayscale
+    } else {
+      switch (max) {
+        case r:
+          hue = (g - b) / (max - min);
+          break;
+        case g:
+          hue = 2 + (b - r) / (max - min);
+          break;
+        case b:
+          hue = 4 + (r - g) / (max - min);
+          break;
+      }
+      hue *= 60;
+      if (hue < 0) hue += 360;
+    }
+
+    return hue;
+}
+
+function rgbToHsl(r, g, b) {
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+
+    if (max === min) {
+      h = s = 0; // achromatic
+    } else {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r:
+          h = (g - b) / d + (g < b ? 6 : 0);
+          break;
+        case g:
+          h = (b - r) / d + 2;
+          break;
+        case b:
+          h = (r - g) / d + 4;
+          break;
+      }
+      h /= 6;
+    }
+
+    return [Math.round(h * 360), Math.round(s * 100), Math.round(l * 100)];
 }
