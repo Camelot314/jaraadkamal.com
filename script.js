@@ -34,7 +34,7 @@ let Projects = {
 let ProjSlider = {
     projectSlider: null,
     sliderWrapper: null,
-    project1: null,
+    project0: null,
     nav: null,
     highlited: null,
 }
@@ -288,7 +288,7 @@ function setUpProjectSlider() {
         
     }
 
-    ProjSlider.project1 = document.getElementById('project-1');
+    ProjSlider.project0 = document.getElementById('project-0');
     var nav = ProjSlider.sliderWrapper.children[1];
     ProjSlider.nav = nav;
     ProjSlider.highlited = 0;  
@@ -324,7 +324,7 @@ function adjustNav(highlight) {
 }
 
 function getProjectWidth() {
-    const style = window.getComputedStyle(ProjSlider.project1);
+    const style = window.getComputedStyle(ProjSlider.project0);
     return parseFloat(style.width);
 }
 
