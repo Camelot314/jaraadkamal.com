@@ -284,7 +284,7 @@ function projectScroll () {
 
     if (width == 0) return;
 
-    highlight = Math.round(scrollFront / width);
+    let highlight = Math.round(scrollFront / width);
     adjustNav(highlight);
     
 }
