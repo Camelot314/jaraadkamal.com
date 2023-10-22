@@ -56,7 +56,7 @@ h1, h2, h3 {
 
 @media screen and (min-width: 825px) {
     .image-container {
-        background-image: url("/assets/banner_horz.JPG");
+        background-image: url("/assets/banner_horz.jpg");
         background-position: 50% 10%;
     }
 }
