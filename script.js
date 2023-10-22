@@ -1,4 +1,10 @@
 /********************** GLOBALS ***********************************************/
+NUM_FEATURED = 3;
+ABOUT_INDEX = 0;
+RESUME_INDEX = 1;
+PROJECTS_INDEX = 2;
+AllowButtons = false;
+
 function initialize () {
     shrinkFeatured();
     setUpStars();
@@ -20,13 +26,15 @@ let FeaturedAnimations = {
     transitionsSet: false,
 }
 
+let Projects = {
+    numProjects: null
+}
+
+
 let ProjSlider = {
     projectSlider: null,
     sliderWrapper: null,
     project1: null,
-    project2: null,
-    project3: null,
-    project4: null,
     nav: null,
     highlited: null,
 }
@@ -36,10 +44,10 @@ window.onload = function() {
     setMainBannerHeight();
     setUpStars();
     setUpHighlighting();
+    setUpProject();
     shrinkFeatured();
 }
 window.addEventListener('resize', resizeWindow);
-document.addEventListener("DOMContentLoaded", setUpProjectSlider);
 
 /*************************** CORE FUNCTIONS ***********************************/
 
@@ -121,7 +129,7 @@ function getStarCount(list) {
  * Functions associated with shrinking the sliding content of the website.
  */
 function shrinkFeatured () {
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < NUM_FEATURED; i++) {
         var div = getFeaturedItem(i);
         NavInfo.heights[i] = div.clientHeight;
         div.style.height = 0;
@@ -131,7 +139,7 @@ function shrinkFeatured () {
 }
 
 function setFeaturedHeight() {
-    for (let i = 0; i < 3; i ++) {
+    for (let i = 0; i < NUM_FEATURED; i ++) {
         if (i == NavInfo.currentlySelected) {
             var div = getFeaturedItem(i);
             div.style.height = `${div.clientHeight}px`;
@@ -164,7 +172,7 @@ function resizeWindow() {
 }
 
 function setTransitions() {
-    for (let i = 0; i < 3; i ++) {
+    for (let i = 0; i < NUM_FEATURED; i ++) {
         var div = getFeaturedItem(i);
         div.style.transition = "height 0.5s";
     }
@@ -180,9 +188,9 @@ function getFeaturedItem(index) {
 
 function getItem(index, type) {
     switch(index) {
-        case 0:
+        case ABOUT_INDEX:
             return document.getElementById("about" + type);
-        case 1:
+        case RESUME_INDEX:
             return document.getElementById("resume" + type);
         default:
             return document.getElementById("projects" + type);
@@ -290,19 +298,24 @@ function unhighlightSkill(section) {
 function setUpProjectSlider() {
     const projectSlider = document.getElementById('project-slider');
     ProjSlider.projectSlider = projectSlider;
-
+    ProjSlider.projectSlider.scrollLeft = 0;
     ProjSlider.sliderWrapper = projectSlider.parentNode;
 
+    var nav = ProjSlider.sliderWrapper.children[1];
+    for (var i = 0; i < projectSlider.children.length; i ++) {
+        var a = document.createElement('a');
+        a.projectNum = i;
+        nav.appendChild(a);
+        a.addEventListener('click', projectJumpEvent);
+        
+    }
+
     ProjSlider.project1 = document.getElementById('project-1');
-    ProjSlider.project2 = document.getElementById('project-3');
-    ProjSlider.project3 = document.getElementById('project-2');
-    ProjSlider.project4 = document.getElementById('project-4');
     var nav = ProjSlider.sliderWrapper.children[1];
     ProjSlider.nav = nav;
     ProjSlider.highlited = 0;  
     adjustNavForce(0, 0);
     ProjSlider.projectSlider.addEventListener('scroll', projectScroll);
-
 }
 
 function projectScroll () {
@@ -337,7 +350,13 @@ function getProjectWidth() {
     return parseFloat(style.width);
 }
 
-function projectJump (index) {
+function projectJumpEvent (event) {
+    const item = event.currentTarget;
+    const index = item.projectNum;
+    projectJump(index);
+}
+
+function projectJump(index) {
     const width = getProjectWidth();
     ProjSlider.projectSlider.scrollLeft = width * index;
     adjustNav(index);
@@ -345,12 +364,35 @@ function projectJump (index) {
 
 function nextProject() {
     const current = ProjSlider.highlited;
-    projectJump((current + 1) % 4);
+    projectJump((current + 1) % Projects.numProjects);
 }
 
 function prevProject() {
     const current = ProjSlider.highlited;
-    projectJump((current + 3) % 4);
+    projectJump((current + (Projects.numProjects - 1)) % Projects.numProjects);
+}
+
+/**
+ * Sets up the project related information. It adds the functionality to the 
+ * mosaics that allow you to click and expand. It will also allow the buttons in
+ * project nav slider to function.
+ */
+function setUpProject() {
+    var projectsHolder = document.getElementById("project-slider");
+    var projects = projectsHolder.children;
+    var element = null;
+
+    Projects.numProjects = projects.length;
+
+    // saving initial values in the global ProjFocused object
+    for (var i = 0; i < projects.length; i ++) {
+        element = projects[i];
+        projects[i].projectNum = i;
+        projects[i].id = `project-${i}`;
+    }
+
+    // SETTING UP PROJECT SLIDER
+    setUpProjectSlider();
 }
 
 function colorToRgba(colorString) {
