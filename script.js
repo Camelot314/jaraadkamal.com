@@ -69,11 +69,11 @@ function setUpStars() {
             const star = new Image();
             if (j < numEmpty) {
                 star.src = "assets/star-empty.png";
-                star.className = "empty";
+                star.className = "empty star";
                 allStars[i].appendChild(star);
             } else {
                 star.src = "assets/star.png";
-                star.className = "filled";
+                star.className = "filled star";
                 allStars[i].appendChild(star);
             }
         }
@@ -251,27 +251,25 @@ function toggleFeatured(index) {
 
 function highlightSkill(section) {
     let highlightColor = window.getComputedStyle(document.body)
-        .getPropertyValue('--accent-color');
+        .getPropertyValue('--accent-bright');
     section.style.color = highlightColor;
     var starHolder = section.children[1];
     for (var i = 0; i < 5; i ++) {
         const child = starHolder.children[i];
-        setFilter(child);
+        setFilter(child, highlightColor);
     }
 }
 
-function setFilter(element) {
-    let color = window.getComputedStyle(document.body)
-            .getPropertyValue('--accent-color');
+function setFilter(element, color) {
     let rgba = colorToRgba(color);
     let hsl = rgbToHsl(...rgba.slice(0,3));
 
     // logic from https://stackoverflow.com/a/29958459
-    let hueDiff = hsl[0] - 38;
-    let satShift = 100 + (24.5 - hsl[1]);
-    let lightShift = 100 + (hsl[2] - 60);
+    let hueDiff = hsl[0];
+    let satShift = 0.5 * hsl[1];
+    let lightShift = 2 * hsl[2];
 
-    filter = `brightness(0.5) sepia(1) hue-rotate(${hueDiff}deg) saturate(${satShift}%) brightness(${lightShift}%)`;
+    filter = `hue-rotate(${hueDiff}deg) saturate(${satShift}%) brightness(${lightShift}%)`;
     element.style.filter = filter;
     element.style.webkitFilter = filter;
 
@@ -279,8 +277,9 @@ function setFilter(element) {
 
 
 function removeFilter(element) {
-    element.style.filter = null;
-    element.style.webkitFilter = null;
+    filter = `saturate(0%) brightness(2000%)`;
+    element.style.filter = filter;
+    element.style.webkitFilter = filter;
 }
 
 function unhighlightSkill(section) {
@@ -452,22 +451,5 @@ function rgbToHsl(r, g, b) {
       h /= 6;
     }
 
-    return [h * 360, s * 100, l * 100];
+    return [Math.round(h * 360), Math.round(s * 100), Math.round(l * 100)];
 }
-
-
-
-// // Example usage:
-// const color1 = "#9d31b6ff";
-// const color2 = "rgb(255,255,255)";
-// const color3 = "rgba(255,255,255,0.5)";
-// const color4 = "#F0f";
-// const color5 = "#9d31b633";
-
-// console.log("COLORS");
-// console.log(colorToRgba(color1)); // [157, 49, 182]
-// console.log(colorToRgba(color2)); // [255, 255, 255]
-// console.log(colorToRgba(color3)); // [255, 255, 255]
-// console.log(colorToRgba(color4));
-// console.log(colorToRgba(color5));
-// console.log("end");
