@@ -253,33 +253,6 @@ function highlightSkill(section) {
     let highlightColor = window.getComputedStyle(document.body)
         .getPropertyValue('--accent-bright');
     section.style.color = highlightColor;
-    // var starHolder = section.children[1];
-    // for (var i = 0; i < 5; i ++) {
-    //     const child = starHolder.children[i];
-    //     setFilter(child, highlightColor);
-    // }
-}
-
-function setFilter(element, color) {
-    let rgba = colorToRgba(color);
-    let hsl = rgbToHsl(...rgba.slice(0,3));
-
-    // logic from https://stackoverflow.com/a/29958459
-    let hueDiff = hsl[0];
-    let satShift = 0.5 * hsl[1];
-    let lightShift = 2 * hsl[2];
-
-    filter = `hue-rotate(${hueDiff}deg) saturate(${satShift}%) brightness(${lightShift}%)`;
-    element.style.filter = filter;
-    element.style.webkitFilter = filter;
-
-}
-
-
-function removeFilter(element) {
-    filter = `saturate(0%) brightness(2000%)`;
-    element.style.filter = filter;
-    element.style.webkitFilter = filter;
 }
 
 function unhighlightSkill(section) {
@@ -311,7 +284,7 @@ function projectScroll () {
 
     if (width == 0) return;
 
-    highlight = Math.round(scrollFront / width);
+    let highlight = Math.round(scrollFront / width);
     adjustNav(highlight);
     
 }
