@@ -2,6 +2,7 @@
     /* 497AA6 */
     --accent-color: #283040;
     --accent-bright: #93ABD9;
+    /* --accent-bright: #497AA6; */
     --background-dark: #252526;
     --heading-color: var(--accent-color);
 }
@@ -214,19 +215,15 @@ h1, h2, h3 {
     padding-top: 0;
 }
 
-
 #skills-grid .between {
     align-items: center;
     margin-top: 7px;
     margin-bottom: 7px;
 }
 
-.star-holder img {
-    width: 15px;
-    margin-right: 2px;
-    margin-left: 2px;
-    align-items: right;
-    float: right;
+.star-holder {
+    font-family: 'Zen Maru Gothic', serif;
+    text-align: right;
 }
 
 .certification p {

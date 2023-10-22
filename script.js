@@ -34,10 +34,10 @@ let ProjSlider = {
 
 /***************************** LISTENERS **************************************/
 window.onload = function() {
-    shrinkFeatured();
     setMainBannerHeight();
     setUpStars();
     setUpHighlighting();
+    shrinkFeatured();
 }
 window.addEventListener('resize', resizeWindow);
 document.addEventListener("DOMContentLoaded", setUpProjectSlider);
@@ -64,19 +64,20 @@ function setUpStars() {
         if (numStars == null) {
             return;
         }
-        const numEmpty = 5 - numStars;
+        let starString = "";
         for (var j = 0; j < 5; j ++) {
-            const star = new Image();
-            if (j < numEmpty) {
-                star.src = "assets/star-empty.png";
-                star.className = "empty star";
-                allStars[i].appendChild(star);
-            } else {
-                star.src = "assets/star.png";
-                star.className = "filled star";
-                allStars[i].appendChild(star);
+
+            if (j < numStars) {
+                starString += "★";
+            }  else {
+                starString += "☆";
+            }
+            if (j < 5) {
+                starString += " ";
             }
         }
+        let text = document.createTextNode(starString);
+        allStars[i].appendChild(text);
     }
 }
 
@@ -253,11 +254,11 @@ function highlightSkill(section) {
     let highlightColor = window.getComputedStyle(document.body)
         .getPropertyValue('--accent-bright');
     section.style.color = highlightColor;
-    var starHolder = section.children[1];
-    for (var i = 0; i < 5; i ++) {
-        const child = starHolder.children[i];
-        setFilter(child, highlightColor);
-    }
+    // var starHolder = section.children[1];
+    // for (var i = 0; i < 5; i ++) {
+    //     const child = starHolder.children[i];
+    //     setFilter(child, highlightColor);
+    // }
 }
 
 function setFilter(element, color) {
@@ -284,10 +285,6 @@ function removeFilter(element) {
 
 function unhighlightSkill(section) {
     section.style.color = null;
-    var starHolder = section.children[1];
-    for (var child=starHolder.firstChild; child !== null; child=child.nextSibling) {
-        removeFilter(child);
-    }
 }
 
 // PROJECTS
