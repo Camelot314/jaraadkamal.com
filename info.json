@@ -1,4 +1,11 @@
 {
+  "about": {
+    "summary": [
+      "Jaraad Kamal graduated from the University of Maryland College Park with a degree in Computer Science in May 2023 with a GPA of 4.0.",
+      "He is a certifed AWS Solutions Architect and has expertise in Python, C, C#, and Java. His current favorite programming language is C. He has hands-on experience with all aspects of the software development lifecycle including software testing. He also has experience with networking and cybersecurity.",
+      "In his spare time, he works on video game development and other programming projects. Most video game development is through C# and the unity framework. His other programming skills include C/C++ Ruby, Golang, Rust, Lisp."
+    ]
+  },
   "resume": {
     "skills": {
       "values": [
@@ -125,6 +132,16 @@
             "Used Android Studio framework to create Mobile Apps",
             "Programmed in Dart and used Flutter Framework"
           ]
+        }
+      ]
+    },
+    "education": {
+      "values": [
+        {
+          "time": "AUGUST 2019 - MAY 2023",
+          "name": "University of Maryland College Park",
+          "location": "College Park, MD",
+          "description": ["Bachelor's in Computer Science", "Summa Cum Laude"]
         }
       ]
     }

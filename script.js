@@ -51,9 +51,10 @@ function readData() {
       return response.json();
     })
     .then((data) => {
+      populateAbout(data.about);
       populateSkills(data.resume.skills);
-      console.log("careers");
-      populateCareers(data.resume.careers);
+      populateTimeline(data.resume.careers, "career");
+      populateTimeline(data.resume.education, "education");
       setUpStars();
       setUpHighlighting();
       setUpProject();
@@ -63,6 +64,19 @@ function readData() {
     .catch((error) => {
       console.error("There was a problem with the fetch operation:", error);
     });
+}
+
+/// Populates the about summary section
+function populateAbout(about) {
+  let summary = document.getElementById("about-summary");
+
+  let numSummary = about.summary.length;
+  summary.classList.add("summary");
+  for (let i = 0; i < numSummary; i++) {
+    let p = document.createElement("p");
+    p.textContent = about.summary[i];
+    summary.appendChild(p);
+  }
 }
 
 /// Using the info from info.json this function will creat the skills grid
@@ -133,27 +147,26 @@ function createSkillLine(skill) {
   return line;
 }
 
-/// Populates the careers portion of the website
-function populateCareers(careers) {
-  let careersDiv = document.getElementById("career");
-  let numCareers = careers.values.length;
+/// Populates the timeline portion of the website
+function populateTimeline(datums, id) {
+  let timelineDiv = document.getElementById(id);
+  let numEntries = datums.values.length;
   let grid = document.createElement("div");
 
   grid.classList.add("timeline", "resume-grid", "timeline-grid");
 
-  for (let i = 0; i < numCareers; i++) {
-    let career = careers.values[i];
-    var children = createCareer(career);
+  for (let i = 0; i < numEntries; i++) {
+    let data = datums.values[i];
+    var children = createTimeline(data);
     for (let j = 0; j < children.length; j++) {
       grid.appendChild(children[j]);
     }
   }
-  careersDiv.appendChild(grid);
+  timelineDiv.appendChild(grid);
 }
 
 /// Creates a timeline object for a given career.
-function createCareer(career) {
-  console.log(career);
+function createTimeline(data) {
   let time = document.createElement("div");
   // creating the timeline info
   time.classList.add(
@@ -162,7 +175,7 @@ function createCareer(career) {
     "exclude-full-width-on-mobile",
     "time"
   );
-  time.textContent = career.time;
+  time.textContent = data.time;
   // creating the career info
   let info = document.createElement("div");
   info.classList.add(
@@ -173,20 +186,20 @@ function createCareer(career) {
   // name
   let title = document.createElement("h3");
   title.classList.add("timeline-event-title", "career-name");
-  title.textContent = career.name;
+  title.textContent = data.name;
   info.appendChild(title);
 
   // location
   let location = document.createElement("p");
-  location.textContent = career.location;
+  location.textContent = data.location;
   location.classList.add("subtitle");
   info.appendChild(location);
 
   // description
   let description = document.createElement("ul");
-  var numBullets = career.description.length;
+  var numBullets = data.description.length;
   for (let i = 0; i < numBullets; i++) {
-    var text = career.description[i];
+    var text = data.description[i];
     var li = document.createElement("li");
     li.textContent = text;
     description.appendChild(li);
