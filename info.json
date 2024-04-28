@@ -145,5 +145,84 @@
         }
       ]
     }
+  },
+  "projects": {
+    "values": [
+      {
+        "name": "JCaml",
+        "links": [
+          { "src": "https://github.com/Camelot314/JCaml", "text": "Github.com" }
+        ],
+        "description": [
+          "This is my compilers project that focused on creating a programming language called JCaml. It is a functional programming language that is similar to Racket.",
+          "The language is written in Racket, C and x86 Assembly. This was a massive compilers project."
+        ],
+        "icon": {
+          "src": "assets/camel.png",
+          "alt": "picture of camel",
+          "target": "https://github.com/Camelot314/JCaml"
+        }
+      },
+      {
+        "name": "Ant Optimization",
+        "links": [
+          {
+            "src": "https://github.com/Camelot314/ant-colony-optimization",
+            "text": "Github.com"
+          }
+        ],
+        "description": [
+          "This project creates an approximate solution to the traveling salesman problem in polynomial time.",
+          "The program uses my approach of Ant Colony Optimization which is an algorithm that models ants foraging."
+        ],
+        "icon": {
+          "src": "assets/nodes.png",
+          "alt": "picture of graph with nodes",
+          "target": "https://github.com/Camelot314/ant-colony-optimization"
+        }
+      },
+      {
+        "name": "Rubik's Analysis",
+        "links": [
+          {
+            "src": "https://camelot314.github.io/rubiks/",
+            "text": "Tutorial"
+          }
+        ],
+        "description": [
+          "I created this project as a simple tutorial for introductory data science.",
+          "It is a project that explored Rubik's cube competitons and analyzed which competitions were performing statistically worse."
+        ],
+        "icon": {
+          "src": "assets/rubik.png",
+          "alt": "picture of rubik's cube",
+          "target": "https://camelot314.github.io/rubiks/"
+        }
+      },
+      {
+        "name": "Block Craft",
+        "links": [
+          {
+            "src": "https://github.com/Camelot314/BlockCraft",
+            "text": "Github.com"
+          },
+          {
+            "download": true,
+            "src": "assets/Block_Craft_1_8_Setup.exe",
+            "filename": "Block_Craft_1_8_Setup.exe",
+            "text": "Windows Download"
+          }
+        ],
+        "description": [
+          "This is a video game I created that similar to the game MineCraft. It is a terraforming and exploration based game.",
+          " It is written in C# and uses the Unity game engine. It is the largest project that I have ever completed."
+        ],
+        "icon": {
+          "src": "assets/Block_Craft_Icon_Sized.png",
+          "alt": "Block Craft Icon",
+          "target": "https://github.com/Camelot314/BlockCraft"
+        }
+      }
+    ]
   }
 }

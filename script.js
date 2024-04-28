@@ -55,6 +55,7 @@ function readData() {
       populateSkills(data.resume.skills);
       populateTimeline(data.resume.careers, "career");
       populateTimeline(data.resume.education, "education");
+      populateProjects(data.projects);
       setUpStars();
       setUpHighlighting();
       setUpProject();
@@ -145,6 +146,74 @@ function createSkillLine(skill) {
   stars.classList.add("star-holder", `${skill.starValue}-star`);
   line.append(title, stars);
   return line;
+}
+
+function populateProjects(projects) {
+  let slider = document.getElementById("project-slider");
+  let numProjects = projects.values.length;
+  for (let i = 0; i < numProjects; i++) {
+    let project = projects.values[i];
+    slider.appendChild(createProject(project));
+  }
+}
+
+function createProject(project) {
+  let content = document.createElement("div");
+  content.classList.add("content", "between");
+  let left = document.createElement("div");
+  left.classList.add("left-half");
+
+  // name
+  let heading = document.createElement("h1");
+  heading.classList.add("project-name");
+  heading.textContent = project.name;
+  left.appendChild(heading);
+
+  // links
+  let links = document.createElement("div");
+  links.classList.add("subheading");
+  let linkHeading = document.createElement("strong");
+  linkHeading.textContent = project.links.length > 1 ? "Links" : "Link";
+  links.appendChild(linkHeading);
+
+  // link text
+  for (let i = 0; i < project.links.length; i++) {
+    let link = document.createElement("a");
+    link.href = project.links[i].src;
+    link.textContent = project.links[i].text;
+    if (!project.links[i].download) {
+      link.target = "_blank";
+    } else {
+      link.download = project.links[i].filename;
+    }
+    links.appendChild(link);
+  }
+  left.appendChild(links);
+
+  // project description
+  for (let i = 0; i < project.description.length; i++) {
+    let p = document.createElement("p");
+    p.classList.add("project-info");
+    p.textContent = project.description[i];
+    left.appendChild(p);
+  }
+
+  content.appendChild(left);
+
+  let right = document.createElement("div");
+  right.classList.add("right-half");
+  let imgLink = document.createElement("a");
+  imgLink.href = project.icon.target;
+
+  let img = document.createElement("img");
+  img.src = project.icon.src;
+  img.alt = project.icon.alt;
+  imgLink.appendChild(img);
+
+  right.appendChild(imgLink);
+
+  content.appendChild(right);
+  return content;
 }
 
 /// Populates the timeline portion of the website
