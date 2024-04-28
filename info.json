@@ -1,0 +1,132 @@
+{
+  "resume": {
+    "skills": {
+      "values": [
+        {
+          "title": "Certifications",
+          "values": [
+            { "title": "AWS", "subtitle": "Solutions Architect (Associates)" }
+          ]
+        },
+        {
+          "title": "Operating Systems",
+          "values": [
+            { "title": "Linux", "starValue": 5 },
+            { "title": "Windows", "starValue": 5 }
+          ]
+        },
+        {
+          "title": "Coding",
+          "values": [
+            { "title": "Python", "starValue": 5 },
+            { "title": "C/C++", "starValue": 5 },
+            { "title": "C#", "starValue": 5 },
+            { "title": "Java", "starValue": 4 },
+            { "title": "SQL", "starValue": 3 },
+            { "title": "Golang", "starValue": 4 },
+            { "title": "Javascript", "starValue": 5 },
+            { "title": "Typescript", "starValue": 5 },
+            { "title": "Rust", "starValue": 3 },
+            { "title": "Lisp Languages", "starValue": 4 },
+            { "title": "x86 Assembly", "starValue": 4 },
+            { "title": "Dart", "starValue": 4 }
+          ]
+        },
+        {
+          "title": "Tools",
+          "values": [
+            { "title": "Git", "starValue": 5 },
+            { "title": "Flutter", "starValue": 5 },
+            { "title": "Visual Studio", "starValue": 5 },
+            { "title": "Atlassian Suite", "starValue": 5 },
+            { "title": "Amazon Web Services", "starValue": 4 },
+            { "title": "Firebase", "starValue": 5 },
+            { "title": "Docker", "starValue": 3 },
+            { "title": "Jenkins", "starValue": 2 },
+            { "title": "Eclipse", "starValue": 4 },
+            { "title": "Subversion", "starValue": 4 }
+          ]
+        }
+      ]
+    },
+    "careers": {
+      "values": [
+        {
+          "time": "OCT 2023 - PRESENT",
+          "name": "Software Engineer @ Pistevo Decision",
+          "location": "Herndon, V.A",
+          "description": [
+            "Flutter mobile app developer",
+            "Working cross platform on Android iOS and Web OS",
+            "Using Google Firebase and Google Cloud technologies"
+          ]
+        },
+        {
+          "time": "JULY 2022 - JUNE 2023",
+          "name": "CS Intern @ US Naval Research Lab",
+          "location": "Washington, D.C.",
+          "description": [
+            "Developed Python drivers for a variety of scientific intrsuments such as waveform generators, power supplies, etc",
+            "Used TCP and serial to communicate with devices",
+            "Modified and extended the Pymeasure library to include more instruments",
+            "Created unit tests using the Pytest library"
+          ]
+        },
+        {
+          "time": "JAN 2023 - MAY 2023",
+          "name": "Lead Developer @ Neuromotor Control and Learning Lab",
+          "location": "College Park, MD",
+          "description": [
+            "Used Unity to develop a virtual testing environment for simulating interactive experiments",
+            "Worked with customer to gather requirements and specifications",
+            "Collaborated with a team of developers in an agile environment",
+            "Wrote extensive documentation for software that was created",
+            "Created webserver and endpoints to act as middleware between separate applications"
+          ]
+        },
+        {
+          "time": "JUNE 2022 - JULY 2022 ",
+          "name": "CS Intern @ Advanced Simulation Technology Inc ",
+          "location": "Herndon, V.A",
+          "description": [
+            "Modified automated test scripts to use in Jenkins Pipeline",
+            "Utilized Golang for developing single sign on authentication with SAML",
+            "Created service endpoints to API for developer use",
+            "Added quality of life features to a Slackbot for internal testing",
+            "Used C++ and OpenVR library for VR development"
+          ]
+        },
+        {
+          "time": "JULY 2021 - AUGUST 2021",
+          "name": "Unity Video Game Development",
+          "location": "Bethesda, MD",
+          "description": [
+            "Used C# programming and Unity Framework to design multiple video games",
+            "Gained experience in .NET Development and Visual Studio",
+            "Worked with Git for version control",
+            "Used self-imposed weekly deadlines for development"
+          ]
+        },
+        {
+          "time": "MAY 2021 - JUNE 2021",
+          "name": "Java Delevopment",
+          "location": "Bethesda, MD",
+          "description": [
+            "Used Java to create a Discord Bot and Java Swing Framework to develope multiple games",
+            "Focused on JUnit Testing for test coverage",
+            "Gained experience in webserver management and Linux"
+          ]
+        },
+        {
+          "time": "MAY 2020 - AUGUST 2020",
+          "name": "App Developer @ Camel App Productions",
+          "location": "Bethesda, MD",
+          "description": [
+            "Used Android Studio framework to create Mobile Apps",
+            "Programmed in Dart and used Flutter Framework"
+          ]
+        }
+      ]
+    }
+  }
+}

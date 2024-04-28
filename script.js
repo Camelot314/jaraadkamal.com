@@ -5,11 +5,6 @@ RESUME_INDEX = 1;
 PROJECTS_INDEX = 2;
 AllowButtons = false;
 
-function initialize() {
-  shrinkFeatured();
-  setUpStars();
-}
-
 let NavInfo = {
   wasVisible: false,
   currentlySelected: 0,
@@ -41,15 +36,166 @@ let ProjSlider = {
 /***************************** LISTENERS **************************************/
 window.onload = function () {
   setMainBannerHeight();
-  setUpStars();
-  setUpHighlighting();
-  setUpProject();
-  shrinkFeatured();
-  AllowButtons = true;
+  readData();
 };
 window.addEventListener("resize", resizeWindow);
 
 /*************************** CORE FUNCTIONS ***********************************/
+
+/// Reads the data from the info.json file. This file includes all the text
+/// data to put into the site.
+function readData() {
+  fetch("info.json")
+    .then((response) => {
+      if (!response.ok) throw new Error("Network response was not okay");
+      return response.json();
+    })
+    .then((data) => {
+      populateSkills(data.resume.skills);
+      console.log("careers");
+      populateCareers(data.resume.careers);
+      setUpStars();
+      setUpHighlighting();
+      setUpProject();
+      shrinkFeatured();
+      AllowButtons = true;
+    })
+    .catch((error) => {
+      console.error("There was a problem with the fetch operation:", error);
+    });
+}
+
+/// Using the info from info.json this function will creat the skills grid
+function populateSkills(skills) {
+  let skillsDiv = document.getElementById("skills");
+  let numSections = skills.values.length;
+  let grid = document.createElement("div");
+  grid.setAttribute("id", "skills-grid");
+  grid.setAttribute("class", "resume-grid");
+  for (let i = 0; i < numSections; i++) {
+    var section = skills.values[i];
+    grid.appendChild(createGridItem(section));
+  }
+  skillsDiv.appendChild(grid);
+}
+
+/// The skills grid is comprised of multiple sections with a special section being
+/// titled certifications. This will create those sub sections with their respective
+/// lines and titles. It will return the seciton item.
+function createGridItem(section) {
+  let isCertification = section.title == "Certifications";
+
+  let sectionItem = document.createElement("div");
+  sectionItem.setAttribute("class", "grid-item");
+  let heading = document.createElement("h3");
+  heading.textContent = section.title;
+  sectionItem.appendChild(heading);
+
+  let numValues = section.values.length;
+  for (let i = 0; i < numValues; i++) {
+    let data = section.values[i];
+    let child = isCertification
+      ? createCertificationLine(data)
+      : createSkillLine(data);
+
+    sectionItem.appendChild(child);
+  }
+
+  return sectionItem;
+}
+
+/// If the skill is a certification skill it will create the necessary elements
+/// for the certificaiton skill.
+function createCertificationLine(cert) {
+  let subclass = "certification";
+  let line = document.createElement("div");
+  line.classList.add("between", subclass);
+  var title = document.createElement("p");
+  title.textContent = cert.title;
+  var subtitle = document.createElement("p");
+  subtitle.textContent = cert.subtitle;
+
+  line.append(title, subtitle);
+  return line;
+}
+
+/// If the skill is a normal skill it will create the skill and stars
+function createSkillLine(skill) {
+  let subclass = "skill";
+  let line = document.createElement("div");
+  line.classList.add("between", subclass);
+  var title = document.createElement("div");
+  title.setAttribute("class", "skill-name");
+  title.textContent = skill.title;
+  var stars = document.createElement("div");
+  stars.classList.add("star-holder", `${skill.starValue}-star`);
+  line.append(title, stars);
+  return line;
+}
+
+/// Populates the careers portion of the website
+function populateCareers(careers) {
+  let careersDiv = document.getElementById("career");
+  let numCareers = careers.values.length;
+  let grid = document.createElement("div");
+
+  grid.classList.add("timeline", "resume-grid", "timeline-grid");
+
+  for (let i = 0; i < numCareers; i++) {
+    let career = careers.values[i];
+    var children = createCareer(career);
+    for (let j = 0; j < children.length; j++) {
+      grid.appendChild(children[j]);
+    }
+  }
+  careersDiv.appendChild(grid);
+}
+
+/// Creates a timeline object for a given career.
+function createCareer(career) {
+  console.log(career);
+  let time = document.createElement("div");
+  // creating the timeline info
+  time.classList.add(
+    "timeline-info",
+    "career-info",
+    "exclude-full-width-on-mobile",
+    "time"
+  );
+  time.textContent = career.time;
+  // creating the career info
+  let info = document.createElement("div");
+  info.classList.add(
+    "timeline-info",
+    "career-info",
+    "exclude-full-width-on-mobile"
+  );
+  // name
+  let title = document.createElement("h3");
+  title.classList.add("timeline-event-title", "career-name");
+  title.textContent = career.name;
+  info.appendChild(title);
+
+  // location
+  let location = document.createElement("p");
+  location.textContent = career.location;
+  location.classList.add("subtitle");
+  info.appendChild(location);
+
+  // description
+  let description = document.createElement("ul");
+  var numBullets = career.description.length;
+  for (let i = 0; i < numBullets; i++) {
+    var text = career.description[i];
+    var li = document.createElement("li");
+    li.textContent = text;
+    description.appendChild(li);
+  }
+
+  info.appendChild(description);
+
+  return [time, info];
+}
 
 function setMainBannerHeight() {
   var navbar = document.getElementById("navbar");
