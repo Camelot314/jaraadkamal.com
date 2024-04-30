@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume JSON Generator</title>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <h1>Resume JSON Generator</h1>
+    <form>
+      <!-- About -->
+      <h2>About</h2>
+      <h4>Summary</h4>
+      <button
+        type="button"
+        onclick="addDescriptionForm('aboutDescriptionContainer','aboutDescriptionLine')"
+      >
+        Add summary paragraph
+      </button>
+      <div id="aboutDescriptionContainer"></div>
+
+      <!-- Resume -->
+      <h2>Resume</h2>
+      <!-- Skills -->
+      <h2>Skills</h2>
+      <div id="skillsContainer"></div>
+      <button type="button" onclick="addSkill()">Add Skill</button>
+
+      <!-- Careers -->
+      <h2>Careers</h2>
+      <div id="careersContainer">
+        <button type="button" onclick="addCareer()">Add Career</button>
+      </div>
+
+      <!-- Education -->
+      <h2>Education</h2>
+      <div id="educationContainer">
+        <button type="button" onclick="addEducation()">Add Education</button>
+      </div>
+
+      <!-- Other resume fields -->
+
+      <!-- Projects -->
+      <h2>Projects</h2>
+      <button type="button" onclick="addProject()">Add Project</button>
+      <div id="projectsContainer"></div>
+
+      <button type="button" onclick="generateJSON()">Generate JSON</button>
+      <button type="button" onclick="clearAll()">Clear All</button>
+
+      <pre id="jsonOutput"></pre>
+    </form>
+    <input
+      type="file"
+      id="jsonFileInput"
+      accept=".json"
+      onchange="handleFileSelect(event)"
+    />
+  </body>
+</html>
