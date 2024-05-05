@@ -23,9 +23,12 @@
       <!-- Resume -->
       <h2>Resume</h2>
       <!-- Skills -->
+      <!-- Skills -->
       <h2>Skills</h2>
-      <div id="skillsContainer"></div>
-      <button type="button" onclick="addSkill()">Add Skill</button>
+      <div id="skillCategoriesContainer"></div>
+      <button type="button" onclick="addSkillCategory()">
+        Add Skill Category
+      </button>
 
       <!-- Careers -->
       <h2>Careers</h2>
@@ -57,5 +60,6 @@
       accept=".json"
       onchange="handleFileSelect(event)"
     />
+    <button type="button" onclick="downloadJSON()">Download JSON</button>
   </body>
 </html>

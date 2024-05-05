@@ -1,3 +1,4 @@
+let generated = false;
 function addDescriptionForm(parentId, newElementClass, text = null) {
   var container = document.getElementById(parentId);
   var newDescriptionInput = document.createElement("textarea");
@@ -11,19 +12,45 @@ function addDescriptionForm(parentId, newElementClass, text = null) {
   container.appendChild(newDescriptionInput);
 }
 
-function addSkill() {
-  var skillContainer = document.getElementById("skillsContainer");
-  var newSkillDiv = document.createElement("div");
+function addSkill(title) {
+  const skillsContainer = document.querySelector(
+    `#skillCategoriesContainer div[data-category="${title}"] .skillsContainer`
+  );
+  const newSkillDiv = document.createElement("div");
   newSkillDiv.innerHTML = `
-      <h3>Skill</h3>
-      <label for="skillTitle">Skill Title:</label><br>
-      <input type="text" class="skillTitle"><br>
-      <label for="skill">Skill:</label><br>
-      <input type="text" class="skill"><br>
-      <label for="starValue">Star Value:</label><br>
-      <input type="number" class="starValue" min="0" max="5" step="1"><br><br>
+    <label for="skillTitle">Skill Title:</label><br>
+    <input type="text" class="skillTitle"><br>
+    <label for="skill">Skill:</label><br>
+    <input type="text" class="skill"><br>
+    <label for="starValue">Star Value:</label><br>
+    <input type="number" class="starValue" min="0" max="5" step="1"><br><br>
   `;
-  skillContainer.appendChild(newSkillDiv);
+  skillsContainer.appendChild(newSkillDiv);
+}
+
+function addSkillCategory(categoryName = null) {
+  let categoryTitle;
+  if (categoryName === null) {
+    categoryTitle = prompt("Enter the category title:");
+  } else {
+    categoryTitle = categoryName;
+  }
+  let container;
+  if (categoryTitle) {
+    const skillCategoriesContainer = document.getElementById(
+      "skillCategoriesContainer"
+    );
+    categoryDiv = document.createElement("div");
+    categoryDiv.dataset.category = categoryTitle;
+    categoryDiv.innerHTML = `
+      <h3>${categoryTitle}</h3>
+      <div class="skillsContainer"></div>
+      <button type="button" onclick="addSkill('${categoryTitle}')">Add Skill</button>
+    `;
+    skillCategoriesContainer.appendChild(categoryDiv);
+    container = categoryDiv.children[1];
+  }
+  return container;
 }
 
 function addCareer() {
@@ -90,6 +117,7 @@ function grabTimelineInfo(elements, prefix) {
 }
 
 function generateJSON() {
+  generated = true;
   var aboutDescriptionLines = document.querySelectorAll(
     ".aboutDescriptionLine"
   );
@@ -100,22 +128,42 @@ function generateJSON() {
     }
   });
 
-  var skills = document.getElementsByClassName("skillTitle");
-  var skillValues = document.getElementsByClassName("skill");
-  var starValues = document.getElementsByClassName("starValue");
+  const skillCategoriesContainer = document.getElementById(
+    "skillCategoriesContainer"
+  );
+  const categoryDivs =
+    skillCategoriesContainer.querySelectorAll("div[data-category]");
 
-  var skillsData = [];
-  for (var i = 0; i < skills.length; i++) {
-    skillsData.push({
-      title: skills[i].value,
-      values: [
-        {
-          title: skillValues[i].value,
-          starValue: parseInt(starValues[i].value),
-        },
-      ],
+  const categories = [];
+
+  categoryDivs.forEach((categoryDiv) => {
+    const title = categoryDiv.dataset.category;
+    const skills = categoryDiv.querySelectorAll(".skillsContainer .skillTitle");
+    const skillValues = categoryDiv.querySelectorAll(".skillsContainer .skill");
+    const starValues = categoryDiv.querySelectorAll(
+      ".skillsContainer .starValue"
+    );
+    const categorySkills = [];
+    for (let i = 0; i < skills.length; i++) {
+      const subtitle = skillValues[i].value
+        ? { subtitle: skillValues[i].value }
+        : {};
+      const starValue = starValues[i].value
+        ? { starValue: parseInt(starValues[i].value) }
+        : {};
+
+      categorySkills.push({
+        title: skills[i].value,
+        ...subtitle,
+        ...starValue,
+      });
+    }
+
+    categories.push({
+      title: title,
+      values: categorySkills,
     });
-  }
+  });
 
   var careers = document.getElementsByClassName("careerTime");
   var careersData = grabTimelineInfo(careers, "career");
@@ -146,14 +194,12 @@ function generateJSON() {
       linksData.push(linkObj);
     });
 
-    var descriptionTextarea = projects[i].parentNode.querySelector(
+    var descriptionTextareas = projects[i].parentNode.querySelectorAll(
       ".projectDescriptionLine"
     );
-    var descriptionLines = descriptionTextarea.value
-      .split("\n")
-      .filter(function (line) {
-        return line.trim() !== "";
-      });
+    var descriptionLines = Array.from(descriptionTextareas).map(
+      (textarea) => textarea.value
+    );
 
     var iconSrc = projects[i].parentNode.querySelector(".iconSrc").value;
     var iconAlt = projects[i].parentNode.querySelector(".iconAlt").value;
@@ -177,7 +223,7 @@ function generateJSON() {
     },
     resume: {
       skills: {
-        values: skillsData,
+        values: categories,
       },
       careers: {
         values: careersData,
@@ -191,16 +237,17 @@ function generateJSON() {
     },
   };
 
-  var jsonString = JSON.stringify(data, null, 4);
+  var jsonString = JSON.stringify(data, null, 2);
   document.getElementById("jsonOutput").innerText = jsonString;
 }
 
 function clearAll() {
+  generated = false;
   var aboutDescriptionContainer = document.getElementById(
     "aboutDescriptionContainer"
   );
   aboutDescriptionContainer.innerHTML = "";
-  var skillContainer = document.getElementById("skillsContainer");
+  var skillContainer = document.getElementById("skillCategoriesContainer");
   skillContainer.innerHTML = "";
   var projectContainer = document.getElementById("projectsContainer");
   projectContainer.innerHTML = "";
@@ -257,8 +304,17 @@ function populateFieldsFromJSON(jsonData) {
     jsonData.resume.skills.values
   ) {
     const skillsData = jsonData.resume.skills.values;
-    skillsData.forEach((skill) => {
-      addSkillWithValues(skill.title, skill.values);
+    skillsData.forEach((category) => {
+      const skillCategory = addSkillCategory(category.title);
+      category.values.forEach((skill) => {
+        const subtitle = skill.subtitle === undefined ? "" : skill.subtitle;
+        addSkillWithValues(
+          skillCategory,
+          skill.title,
+          subtitle,
+          skill.starValue
+        );
+      });
     });
   }
 
@@ -310,23 +366,23 @@ function populateFieldsFromJSON(jsonData) {
   }
 }
 
-function addSkillWithValues(title, values) {
-  var skillContainer = document.getElementById("skillsContainer");
+function addSkillWithValues(element, title, subtitle, starValue) {
   var newSkillDiv = document.createElement("div");
   newSkillDiv.innerHTML = `
       <h3>Skill</h3>
       <label for="skillTitle">Skill Title:</label><br>
       <input type="text" class="skillTitle" value="${title}"><br>
-      <label for="skill">Skill:</label><br>
-      <input type="text" class="skill" value="${values[0].title}"><br>
+      <label for="skill">Subtitle:</label><br>
+      <input type="text" class="skill" value="${subtitle}"><br>
       <label for="starValue">Star Value:</label><br>
       <input 
         type="number" 
         class="starValue" 
         min="0" max="5" 
-        step="1" value="${values[0].starValue}"><br><br>
+        step="1" value="${starValue}"><br><br>
   `;
-  skillContainer.appendChild(newSkillDiv);
+
+  element.insertBefore(newSkillDiv, element.firstChild);
 }
 
 function addCareerWithValues(time, name, location, description) {
@@ -464,4 +520,46 @@ function populateFieldsFromFile() {
   } else {
     console.error('Element with ID "jsonFileInput" not found.');
   }
+}
+
+function populateSkillCategories(jsonData) {
+  const skillCategoriesContainer = document.getElementById(
+    "skillCategoriesContainer"
+  );
+  skillCategoriesContainer.innerHTML = "";
+
+  if (
+    jsonData.resume &&
+    jsonData.resume.skills &&
+    jsonData.resume.skills.categories
+  ) {
+    const categories = jsonData.resume.skills.categories;
+    categories.forEach((category) => {
+      const categoryDiv = document.createElement("div");
+      categoryDiv.innerHTML = `
+        <h3>${category.title}</h3>
+        <div class="skillsContainer"></div>
+        <button type="button" onclick="addSkill('${category.title}')">Add Skill</button>
+      `;
+      skillCategoriesContainer.appendChild(categoryDiv);
+    });
+  }
+}
+
+function downloadJSON() {
+  if (!generated) generateJSON();
+  const jsonString = document.getElementById("jsonOutput").innerText;
+  const filename = "resume.json"; // Set your desired filename here
+  const blob = new Blob([jsonString], { type: "application/json" });
+  const url = window.URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+
+  // Cleanup
+  document.body.removeChild(link);
+  window.URL.revokeObjectURL(url);
 }
