@@ -20,7 +20,7 @@ function addSkill(title) {
   newSkillDiv.innerHTML = `
     <label for="skillTitle">Skill Title:</label><br>
     <input type="text" class="skillTitle"><br>
-    <label for="skill">Skill:</label><br>
+    <label for="skill">Subtitle:</label><br>
     <input type="text" class="skill"><br>
     <label for="starValue">Star Value:</label><br>
     <input type="number" class="starValue" min="0" max="5" step="1"><br><br>
@@ -45,7 +45,7 @@ function addSkillCategory(categoryName = null) {
     categoryDiv.innerHTML = `
       <h3>${categoryTitle}</h3>
       <div class="skillsContainer"></div>
-      <button type="button" onclick="addSkill('${categoryTitle}')">Add Skill</button>
+      <button type="button" class='simple-button' onclick="addSkill('${categoryTitle}')">Add Skill</button>
     `;
     skillCategoriesContainer.appendChild(categoryDiv);
     container = categoryDiv.children[1];
@@ -398,7 +398,7 @@ function addCareerWithValues(time, name, location, description) {
           <label for="careerLocation">Location:</label><br>
           <input type="text" class="careerLocation" value="${location}"><br>
           <h4>Description</h4>
-          <button type="button" onclick="addDescription(this.parentNode, 'careerDescriptionLine')">
+          <button type="button" class='simple-button' onclick="addDescription(this.parentNode, 'careerDescriptionLine')">
           Add Bullet
           </button>
           <div class="descriptionContainer">
@@ -431,7 +431,7 @@ function addEducationWithValues(time, name, location, description) {
           <label for="eduLocation">Location:</label><br>
           <input type="text" class="eduLocation" value="${location}"><br>
           <h4>Description</h4>
-          <button type="button" onclick="addDescription(this.parentNode, 'eduDescriptionLine')">
+          <button type="button" class='simple-button' onclick="addDescription(this.parentNode, 'eduDescriptionLine')">
           Add Bullet
           </button>
           <div class="descriptionContainer">
@@ -539,7 +539,7 @@ function populateSkillCategories(jsonData) {
       categoryDiv.innerHTML = `
         <h3>${category.title}</h3>
         <div class="skillsContainer"></div>
-        <button type="button" onclick="addSkill('${category.title}')">Add Skill</button>
+        <button type="button" class='simple-button' onclick="addSkill('${category.title}')">Add Skill</button>
       `;
       skillCategoriesContainer.appendChild(categoryDiv);
     });
