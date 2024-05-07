@@ -12,46 +12,121 @@
         {
           "title": "Certifications",
           "values": [
-            { "title": "AWS", "subtitle": "Solutions Architect (Associates)" }
+            {
+              "title": "AWS",
+              "subtitle": "Solutions Architect (Associates)"
+            }
           ]
         },
         {
           "title": "Operating Systems",
           "values": [
-            { "title": "Linux", "starValue": 5 },
-            { "title": "Windows", "starValue": 5 }
+            {
+              "title": "Linux",
+              "starValue": 5
+            },
+            {
+              "title": "Windows",
+              "starValue": 5
+            }
           ]
         },
         {
           "title": "Coding",
           "values": [
-            { "title": "Python", "starValue": 5 },
-            { "title": "C/C++", "starValue": 5 },
-            { "title": "C#", "starValue": 5 },
-            { "title": "Java", "starValue": 4 },
-            { "title": "SQL", "starValue": 3 },
-            { "title": "Golang", "starValue": 4 },
-            { "title": "Javascript", "starValue": 5 },
-            { "title": "Typescript", "starValue": 5 },
-            { "title": "Rust", "starValue": 3 },
-            { "title": "Lisp Languages", "starValue": 4 },
-            { "title": "x86 Assembly", "starValue": 4 },
-            { "title": "Dart", "starValue": 4 }
+            {
+              "title": "Python",
+              "starValue": 5
+            },
+            {
+              "title": "C/C++",
+              "starValue": 5
+            },
+            {
+              "title": "C#",
+              "starValue": 5
+            },
+            {
+              "title": "Java",
+              "starValue": 4
+            },
+            {
+              "title": "SQL",
+              "starValue": 3
+            },
+            {
+              "title": "Golang",
+              "starValue": 4
+            },
+            {
+              "title": "Javascript",
+              "starValue": 5
+            },
+            {
+              "title": "Typescript",
+              "starValue": 5
+            },
+            {
+              "title": "Rust",
+              "starValue": 3
+            },
+            {
+              "title": "Lisp Languages",
+              "starValue": 4
+            },
+            {
+              "title": "x86 Assembly",
+              "starValue": 4
+            },
+            {
+              "title": "Dart",
+              "starValue": 5
+            }
           ]
         },
         {
           "title": "Tools",
           "values": [
-            { "title": "Git", "starValue": 5 },
-            { "title": "Flutter", "starValue": 5 },
-            { "title": "Visual Studio", "starValue": 5 },
-            { "title": "Atlassian Suite", "starValue": 5 },
-            { "title": "Amazon Web Services", "starValue": 4 },
-            { "title": "Firebase", "starValue": 5 },
-            { "title": "Docker", "starValue": 3 },
-            { "title": "Jenkins", "starValue": 2 },
-            { "title": "Eclipse", "starValue": 4 },
-            { "title": "Subversion", "starValue": 4 }
+            {
+              "title": "Git",
+              "starValue": 5
+            },
+            {
+              "title": "Flutter",
+              "starValue": 5
+            },
+            {
+              "title": "Visual Studio",
+              "starValue": 5
+            },
+            {
+              "title": "Atlassian Suite",
+              "starValue": 5
+            },
+            {
+              "title": "Amazon Web Services",
+              "starValue": 4
+            },
+            {
+              "title": "Firebase",
+              "starValue": 5
+            },
+            {
+              "title": "Docker",
+              "starValue": 3
+            },
+            {
+              "title": "Jenkins",
+              "starValue": 2
+            },
+            {
+              "title": "Eclipse",
+              "starValue": 4
+            },
+            {
+              "title": "Subversion",
+              "starValue": 4
+            }
           ]
         }
       ]
@@ -151,7 +226,10 @@
       {
         "name": "JCaml",
         "links": [
-          { "src": "https://github.com/Camelot314/JCaml", "text": "Github.com" }
+          {
+            "src": "https://github.com/Camelot314/JCaml",
+            "text": "Github.com"
+          }
         ],
         "description": [
           "This is my compilers project that focused on creating a programming language called JCaml. It is a functional programming language that is similar to Racket.",
@@ -207,10 +285,10 @@
             "text": "Github.com"
           },
           {
-            "download": true,
             "src": "assets/Block_Craft_1_8_Setup.exe",
-            "filename": "Block_Craft_1_8_Setup.exe",
-            "text": "Windows Download"
+            "text": "Windows Download",
+            "download": true,
+            "filename": "Block_Craft_1_8_Setup.exe"
           }
         ],
         "description": [
