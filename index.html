@@ -47,24 +47,8 @@
     <div class="featured section" id="about">
       <img src="assets/profile.jpg" alt="picture of Jaraad" />
       <div class="text-box">
-        <div class="summary">
-          <p>
-            Jaraad Kamal graduated from the University of Maryland College Park
-            with a degree in Computer Science in May 2023 with a GPA of 4.0.
-          </p>
-          <p>
-            He is a certifed AWS Solutions Architect and has expertise in
-            Python, C, C#, and Java. His current favorite programming language
-            is C. He has hands-on experience with all aspects of the software
-            development lifecycle including software testing. He also has
-            experience with networking and cybersecurity.
-          </p>
-          <p>
-            In his spare time, he works on video game development and other
-            programming projects. Most video game development is through C# and
-            the unity framework. His other programming skills include C/C++
-            Ruby, Golang, Rust, Lisp.
-          </p>
+        <div class="summary" id="about-summary">
+          <!-- dynamically filled summary from info.json -->
         </div>
       </div>
     </div>
@@ -85,19 +69,7 @@
         <div class="section-break full-width">
           <h2>Education</h2>
         </div>
-        <div class="timeline resume-grid timeline-grid">
-          <div class="timeline-info exclude-full-width-on-mobile time">
-            AUGUST 2019 - MAY 2023
-          </div>
-          <div class="timeline-info exclude-full-width-on-mobile">
-            <h3 class="timeline-event-title career-name">
-              University of Maryland College Park
-            </h3>
-            <p class="subtitle">College Park, MD</p>
-            <p>Bachelor's in Computer Science</p>
-            <p>Summa Cum Laude</p>
-          </div>
-        </div>
+        <!-- Dynamically filling with info.json -->
       </div>
       <div id="resume-download">
         <a class="button" href="assets/Jaraad Kamal Resume.pdf" download>
@@ -108,122 +80,7 @@
     <div class="featured section" id="projects">
       <div class="slider-wrapper">
         <div class="slider" id="project-slider">
-          <div class="content between">
-            <div class="left-half">
-              <h1 class="project-name">JCaml</h1>
-              <div class="subheading">
-                <strong>Link</strong>
-                <a href="https://github.com/Camelot314/JCaml" target="_blank">
-                  Github.com
-                </a>
-              </div>
-              <p class="project-info">
-                This is my compilers project that focused on creating a
-                programming language called JCaml. It is a functional
-                programming language that is similar to Racket.
-              </p>
-              <p class="project-info">
-                The language is written in Racket, C and x86 Assembly. This was
-                a massive compilers project.
-              </p>
-            </div>
-            <div class="right-half">
-              <a href="https://github.com/Camelot314/JCaml" target="_blank">
-                <img src="assets/camel.png" alt="picture of camel" />
-              </a>
-            </div>
-          </div>
-          <div class="content between">
-            <div class="left-half">
-              <h1 class="project-name">Ant Optimization</h1>
-              <div class="subheading">
-                <strong>Link</strong>
-                <a
-                  href="https://github.com/Camelot314/ant-colony-optimization"
-                  target="_blank"
-                >
-                  GitHub.com
-                </a>
-              </div>
-              <p class="project-info">
-                This project creates an approximate solution to the traveling
-                salesman problem in polynomial time.
-              </p>
-              <p class="project-info">
-                The program uses my approach of
-                <i>Ant Colony Optimization</i> which is an algorithm that models
-                ants foraging.
-              </p>
-            </div>
-            <div class="right-half">
-              <a
-                href="https://github.com/Camelot314/ant-colony-optimization"
-                target="_blank"
-              >
-                <img src="assets/nodes.png" alt="picture of graph with nodes" />
-              </a>
-            </div>
-          </div>
-          <div class="content between">
-            <div class="left-half">
-              <h1 class="project-name">Rubik's Analysis</h1>
-              <div class="subheading">
-                <strong>Link</strong>
-                <a href="https://camelot314.github.io/rubiks/" target="_blank">
-                  Tutorial
-                </a>
-              </div>
-              <p class="project-info">
-                I created this project as a simple tutorial for introductory
-                data science.
-              </p>
-              <p class="project-info">
-                It is a project that explored Rubik's cube competitons and
-                analyzed which competitions were performing statistically worse.
-              </p>
-            </div>
-            <div class="right-half">
-              <a href="https://camelot314.github.io/rubiks/" target="_blank">
-                <img src="assets/rubik.png" alt="picture of rubik's cube" />
-              </a>
-            </div>
-          </div>
-          <div class="content between">
-            <div class="left-half">
-              <h1 class="project-name">Block Craft</h1>
-              <div class="subheading">
-                <strong>Link</strong>
-                <a
-                  href="https://github.com/Camelot314/BlockCraft"
-                  target="_blank"
-                >
-                  Github.com
-                </a>
-                <a href="assets/Block_Craft_1_8_Setup.exe" download>
-                  Windows Download
-                </a>
-              </div>
-              <p class="project-info">
-                This is a video game I created that similar to the game
-                MineCraft. It is a terraforming and exploration based game.
-              </p>
-              <p class="project-info">
-                It is written in C# and uses the Unity game engine. It is the
-                largest project that I have ever completed.
-              </p>
-            </div>
-            <div class="right-half">
-              <a
-                href="https://github.com/Camelot314/BlockCraft"
-                target="_blank"
-              >
-                <img
-                  src="assets/Block_Craft_Icon_Sized.png"
-                  alt="picture of rubik's cube"
-                />
-              </a>
-            </div>
-          </div>
+          <!-- Dynamically filling projects from info.json -->
         </div>
         <div class="slider-nav exclude-full-width-on-mobile"></div>
         <img
