@@ -14,6 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/x-icon" href="./assets/layout.png" />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
   </head>
@@ -83,6 +84,9 @@
         onchange="handleFileSelect(event)"
       />
       <div class="row">
+        <button type="button" class="icon-button" onclick="copyJson()">
+          <img src="./assets/copy.png" />
+        </button>
         <button type="button" class="icon-button" onclick="downloadJSON()">
           <img src="./assets/download.png" />
         </button>
