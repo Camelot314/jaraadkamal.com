@@ -1,4 +1,5 @@
 let generated = false;
+
 function addDescriptionForm(parentId, newElementClass, text = null) {
   var container = document.getElementById(parentId);
   var newDescriptionInput = document.createElement("textarea");
@@ -382,7 +383,7 @@ function addSkillWithValues(element, title, subtitle, starValue) {
         step="1" value="${starValue}"><br><br>
   `;
 
-  element.insertBefore(newSkillDiv, element.firstChild);
+  element.appendChild(newSkillDiv);
 }
 
 function addCareerWithValues(time, name, location, description) {
@@ -473,7 +474,7 @@ function addProjectWithValues(name, links, description, icon) {
       <label for="projName">Name:</label><br>
       <input type="text" class="projName" value="${name}"><br>
       <h4>Links</h4>
-      <button type="button" onclick="addLink(this.parentNode)">Add Link</button>
+      <button type="button" class="simple-button" onclick="addLink(this.parentNode)">Add Link</button>
       <div class="linksContainer">
           ${generateProjectLinksString(links)}
       </div>
@@ -486,7 +487,8 @@ function addProjectWithValues(name, links, description, icon) {
         icon.target || ""
       }"><br><br>
       <label for="description">Description:</label><br>
-      <button type="button" onclick="addDescription(this.parentNode, 'projectDescriptionLine')">
+      <button type="button" class="simple-button" 
+      onclick="addDescription(this.parentNode, 'projectDescriptionLine')">
       Add Bullet
       </button>
       <div class="descriptionContainer">
@@ -562,4 +564,48 @@ function downloadJSON() {
   // Cleanup
   document.body.removeChild(link);
   window.URL.revokeObjectURL(url);
+}
+
+// deprecated fallback function for copying to clipboard. This is in case
+// the browser does not support the clipboard behavior
+function fallbackCopyTextToClipboard(text) {
+  var textArea = document.createElement("textarea");
+  textArea.value = text;
+
+  // Avoid scrolling to bottom
+  textArea.style.top = "0";
+  textArea.style.left = "0";
+  textArea.style.position = "fixed";
+
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+
+  try {
+    var successful = document.execCommand("copy");
+    var msg = successful ? "successful" : "unsuccessful";
+    console.log("Fallback: Copying text command was " + msg);
+  } catch (err) {
+    console.error("Fallback: Oops, unable to copy", err);
+  }
+
+  document.body.removeChild(textArea);
+}
+
+function copyTextToClipboard(text) {
+  if (!navigator.clipboard) {
+    fallbackCopyTextToClipboard(text);
+    return;
+  }
+  navigator.clipboard.writeText(text).then(
+    () => {},
+    (err) => {
+      console.error("Async: Could not copy text: ", err);
+    }
+  );
+}
+
+function copyJson() {
+  let text = document.getElementById("jsonOutput").innerText;
+  copyTextToClipboard(text);
 }
