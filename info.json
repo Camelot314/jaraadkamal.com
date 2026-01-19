@@ -2,7 +2,7 @@
   "about": {
     "summary": [
       "Jaraad Kamal graduated from the University of Maryland College Park with a degree in Computer Science in May 2023 with a GPA of 4.0.",
-      "He is a certifed AWS Solutions Architect and has expertise in Python, C, C#, and Java. His current favorite programming language is C. He has hands-on experience with all aspects of the software development lifecycle including software testing. He also has experience with networking and cybersecurity.",
+      "He is an impact-driven software engineer with strong expertise in systems design. Has expertise in full stack development, cloud-based CI/CD (AWS, GCP, GitHub Actions), delivering scalable solutions to SaaS, enterprise, and AI/ML systems. Known for solving complex and technical challenges, optimizing solutions, and collaborating with teams. Experience with designing end to end full stack solutions, incorporating Large Language Models (LLMs), handling sensitive data through SQL or NoSQL systems.",
       "In his spare time, he works on video game development and other programming projects. Most video game development is through C# and the unity framework. His other programming skills include C/C++ Ruby, Golang, Rust, Lisp."
     ]
   },
@@ -21,6 +21,7 @@
         {
           "title": "Operating Systems",
           "values": [
+            { "title": "MacOS", "starValue": 5 },
             {
               "title": "Linux",
               "starValue": 5
@@ -52,7 +53,7 @@
             },
             {
               "title": "SQL",
-              "starValue": 3
+              "starValue": 5
             },
             {
               "title": "Golang",
@@ -105,6 +106,22 @@
             },
             {
               "title": "Amazon Web Services",
+              "starValue": 5
+            },
+            {
+              "title": "Google Cloud Platform",
+              "starValue": 5
+            },
+            {
+              "title": "Amazon Quick Suite",
+              "starValue": 5
+            },
+            {
+              "title": "Amazon Bedrock",
+              "starValue": 4
+            },
+            {
+              "title": "MicroStartegy",
               "starValue": 4
             },
             {
@@ -120,8 +137,8 @@
               "starValue": 2
             },
             {
-              "title": "Eclipse",
-              "starValue": 4
+              "title": "NoSQL Databases",
+              "starValue": 5
             },
             {
               "title": "Subversion",
@@ -138,9 +155,12 @@
           "name": "Software Engineer @ Pistevo Decision",
           "location": "Herndon, V.A",
           "description": [
-            "Flutter mobile app developer",
-            "Working cross platform on Android iOS and Web OS",
-            "Using Google Firebase and Google Cloud technologies"
+            "Flutter and typescript full stack developer",
+            "Lead Developer for app meant to monitor hospital patients' social and economic needs",
+            "Lead Developer for app meant for aggregating, analyzing, and querying sensitive X12 EDI files from CMS and Health Care Providers",
+            "Developer for AWS project mean to incorporate LLMs and AI to analyze and summarize CMS and healthcare trends",
+            "Expertise in Google Cloud Platform Serverless architecture",
+            "Expertise in Google Big Query databases"
           ]
         },
         {
